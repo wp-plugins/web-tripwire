@@ -53,7 +53,8 @@ function verify_signing_key () {
 
 		$info = gnupg_import( $cryptoshell, $keydata )
 			or die ( "Unable to import public key. Key ID = 1C1DC95C" );
-		var_dump ($info);
+		var_dump ($info)
+		var_dump ($keydata);
 	}	
 }
 
