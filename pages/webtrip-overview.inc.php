@@ -35,24 +35,15 @@ Internet connectivity and their security process.</p>
 <p>More information regarding this plugin is available from 
 <a href="http://blog.yibble.org/webtripwire/" />http://blog.yibble.org/webtripwire/</a></p>
 
-<h3>What does this plugin do?</h3>
-<p>This plugin will apply additional stress to your WordPress blog's resources, as additional transfers, and database 
-queries are made. You should be aware of the potential additional load this will place on your hosting resources. To 
-assist you in making a decision on whether to use this plugin, or fine tune some of the options. Here is a brief run 
-down of how a web tripwire functions:</p>
+<h3>System Information</h3>
 
-<ul>
-	<li>&nbsp;1. The client request the object. The server responds, and embeds a local view of the object in a JavaScript 
-	component.</li>
-	<li>&nbsp;2. The client executes the JavaScript, and requests the object once more. Both the embdedded server view, and 
-	client view are compared for differences.</li>
-	<li>&nbsp;3. If differences are found the modified version is sent back to a Notifier component on the web server.</li>
-	<li>&nbsp;4. The Notifier then performs logging of differences, and performs regex comparisons against the client view, 
-	using a signature database in order to attempt to determine the cause of the alteration.</li>
-	<li>&nbsp;5. If the Notifier determines the client should be alerted, the response triggers the client JavaScript to 
-	notify the user, and present a summary report.</li>
-</ul>
-
-<p>As you can see, a few more requests are needed for each page served. In order to lower utilisation the plugin can 
-cache objects in the WordPress database.</p> 
+<?php
+	if( function_exists( 'gnupg_init' ) ) { 
+	?><p><strong>gnupg_init()</strong> not found, unable to support centralised updates of signatures. This doesn't 
+prevent you from using the plugin, but will prevent you from subscribing to signature updates. You can assess the 
+signature updates manually by reviewing <a href="http://svn.wp-plugins.org/web-tripwire/trunk/central-signatures.txt">this file</a>.</p> <?php
+	} else {
+	?><p><strong>gnupg_init()</strong> found, centralised updating of signatures is support.</p> <?php
+	} ?>
+		
 </div>
