@@ -30,7 +30,7 @@ Author URI: http://blog.yibble.org/
  * Include files get defined below:
  */
 require_once ( 'includes/wp-common.php');
-require_once ( 'includes/wp-gnupg.php');
+//require_once ( 'includes/wp-gnupg.php');
 
 /**
  * Variables get defined below:
@@ -316,7 +316,7 @@ function web_tripwire_signatures() {
 			
 			break;
 		case 'update':
-			$info = verify_gpg_signature( get_gpg_plaintext (), get_gpg_signature () );
+			//$info = verify_gpg_signature( get_gpg_plaintext (), get_gpg_signature () );
 
 			if ( $info !== FALSE ) {
 				$message = "Verification passed, Fingerprint = " . $info['fingerprint'];
