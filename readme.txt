@@ -4,7 +4,7 @@ Donate link: http://blog.yibble.org/webtripwire/
 Tags: tripwire, security, inject, advertisments
 Requires at least: 2.7.1
 Tested up to: 2.7.1
-Stable tag: 0.0.8
+Stable tag: 0.0.7
 
 Detects in-flight modifications to the HTML, notifies users, and weblog administrators.
 
