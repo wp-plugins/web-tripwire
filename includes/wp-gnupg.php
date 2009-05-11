@@ -51,7 +51,6 @@ function verify_signing_key () {
 		$keydata = file_get_contents( plugins_url( 'web-tripwire/1C1DC95C.gpg') )
 			or die( "Failed to load public key file." );
 
-$cryptoshell = gnupg_init();
 		$info = gnupg_import( $cryptoshell, $keydata )
 			or die ( "Unable to import public key. Key ID = 1C1DC95C" );
 		var_dump( $info );
@@ -62,6 +61,9 @@ function verify_gpg_signature ( $plaintext, $signature ) {
 	global $cryptoshell;
 	
 	verify_signing_key();	
+
+	var_dump($plaintext);
+	var_dump($signature);
 	
 	$info = gnupg_verify( $cryptoshell, $plaintext, $signature )
 		or die( "Unable to perform gnupg_verify()." );
