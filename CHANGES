@@ -1,5 +1,9 @@
 0.1.0
- * ADD: An additional administration menu option to view this file. So that users can determine if later versions of the plugin fix any issues they might be expiriencing.
+ * ADD: An additional administration menu option to view this file. So that
+users can determine if later versions of the plugin fix any issues they might
+be expiriencing.
 
 0.0.9
- * FIX: Previewing posts and pages was causing multiple stream reading failures, which would bloat the httpd log to extreme proportions. Now resolved! This one was a show-stopper.
+ * FIX: Previewing posts and pages was causing multiple stream reading
+failures, which would bloat the httpd log to extreme proportions. Now 
+resolved! This one was a show-stopper.

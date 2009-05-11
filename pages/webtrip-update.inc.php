@@ -20,9 +20,6 @@
 ?>
 
 <div class="wrap">
-<h2>Web Tripwire Plugin Change Log</h2>
-<p>This is the change log for the current development version of the Web Tripwires plugin.</p>
-
-<iframe style="width: 100%; height: 500px;" src="http://svn.wp-plugins.org/web-tripwire/trunk/CHANGES"></iframe> 
-
+<h2>Web Tripwire Plugin Signature Update</h2>
+<p>Signature update stuff to go here.</p>
 </div>
