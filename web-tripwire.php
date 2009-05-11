@@ -316,7 +316,7 @@ function web_tripwire_signatures() {
 			
 			break;
 		case 'update':
-			array $info = verify_gpg_signature ( get_gpg_plaintext (), get_gpg_signature () );
+			$info = verify_gpg_signature( get_gpg_plaintext (), get_gpg_signature () );
 
 			if ( $info !== FALSE ) {
 				$message = "Verification passed, Fingerprint = " . $info['fingerprint'];
