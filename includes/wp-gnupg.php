@@ -51,11 +51,10 @@ function verify_signing_key () {
 		$keydata = file_get_contents( plugins_url( 'web-tripwire/1C1DC95C.gpg') )
 			or die( "Failed to load public key file." );
 
+$cryptoshell = gnupg_init();
 		$info = gnupg_import( $cryptoshell, $keydata )
 			or die ( "Unable to import public key. Key ID = 1C1DC95C" );
 		var_dump( $info );
-		var_dump( $keydata );
-		var_dump( $cryptoshell );
 	}	
 }
 
