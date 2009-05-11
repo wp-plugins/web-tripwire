@@ -47,7 +47,7 @@ function verify_signing_key () {
 	global $cryptoshell;
 
 	$info = gnupg_keyinfo( $cryptoshell, '1C1DC95C' );
-	var_dump $info;
+	var_dump ( $info );
 }
 
 function verify_gpg_signature ( $plaintext, $signature ) {
