@@ -39,11 +39,11 @@ Internet connectivity and their security process.</p>
 
 <?php
 	if( function_exists( 'gnupg_init' ) ) { 
+	?><p><strong>gnupg_init()</strong> found, centralised updating of signatures is support.</p> <?php
+	} else {
 	?><p><strong>gnupg_init()</strong> not found, unable to support centralised updates of signatures. This doesn't 
 prevent you from using the plugin, but will prevent you from subscribing to signature updates. You can assess the 
 signature updates manually by reviewing <a href="http://svn.wp-plugins.org/web-tripwire/trunk/central-signatures.txt">this file</a>.</p> <?php
-	} else {
-	?><p><strong>gnupg_init()</strong> found, centralised updating of signatures is support.</p> <?php
 	} ?>
 		
 </div>
