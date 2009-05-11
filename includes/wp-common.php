@@ -80,7 +80,7 @@ function get_html_data ( $referrer_url )
 {
 	$content = "";
 
-	if( !$html_stream = @fopen( $referrer_url, "r" ) {
+	if( !( $html_stream = @fopen( $referrer_url, "r" ) ) {
 		die( "Unable to open HTML stream!");
 	}
 	while( !feof( $html_stream ) ) {
