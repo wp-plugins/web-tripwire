@@ -47,8 +47,7 @@ function verify_signing_key () {
 	global $cryptoshell;
 
 	$info = gnupg_keyinfo( $cryptoshell, '1C1DC95C' );
-	//var_dump ($info);
-	if ( $info === FALSE ) {	// Looks like my key's not here!
+	if ( !$info ) {	// Looks like my key's not here!
 
 $keydata = "-----BEGIN PGP PUBLIC KEY BLOCK-----" .
 "Version: GnuPG v1.4.9 (GNU/Linux)
