@@ -31,7 +31,7 @@ Author URI: http://blog.yibble.org/
  */
 require_once ( 'includes/wp-common.php');
 
-if( function_exists( 'gnupg_init' )
+if( function_exists( 'gnupg_init' ) )
 	require_once ( 'includes/wp-gnupg.php');
 
 /**
