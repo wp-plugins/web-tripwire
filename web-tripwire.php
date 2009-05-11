@@ -318,7 +318,7 @@ function web_tripwire_signatures() {
 			
 			break;
 		case 'update':
-			if( function_exists( 'gnupg_init' ) {
+			if( function_exists( 'gnupg_init' ) ) {
 			} else {
 				$message = 'gnupg_init() is not available to PHP.';
 			}

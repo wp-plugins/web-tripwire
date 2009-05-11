@@ -43,7 +43,7 @@ if (count($results)) {
 	         <button type="submit" name="op" value="refresh" class="button-secondary refresh">Refresh</button>
 	         <button type="submit" name="op" value="delete" class="button-secondary delete">Delete</button>
 		  </div>
-		  <?php if( function_exists( 'gnupg_init' ) { ?>
+		  <?php if( function_exists( 'gnupg_init' ) ) { ?>
         <div class="alignright">
 	         <button type="submit" name="op" value="update" class="button-primary update">Update Signatures</button>
 	     </div>
@@ -158,7 +158,7 @@ if (count($results)) {
         <div class="alignleft">
 	         <button type="submit" name="op" value="add" class="button-secondary add">Add</button>
 	     </div>
-		  <?php if( function_exists( 'gnupg_init' ) { ?>
+		  <?php if( function_exists( 'gnupg_init' ) ) { ?>
         <div class="alignright">
 	         <button type="submit" name="op" value="update" class="button-primary update">Update Signatures</button>
 	     </div>
