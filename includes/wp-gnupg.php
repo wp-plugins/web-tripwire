@@ -43,8 +43,17 @@ function get_gpg_plaintext () {
 	return $content;
 }
 
+function verify_signing_key () {
+	global $cryptoshell;
+
+	$info = gnupg_keyinfo( $cryptoshell, '1C1DC95C' );
+	var_dump $info;
+}
+
 function verify_gpg_signature ( $plaintext, $signature ) {
 	global $cryptoshell;
+	
+	verify_signing_key ();	
 	
 	$info = gnupg_verify( $cryptoshell, $plaintext, $signature )
 		or die( "Unable to perform gnupg_verify()." );
