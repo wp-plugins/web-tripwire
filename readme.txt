@@ -4,9 +4,9 @@ Donate link: http://blog.yibble.org/webtripwire/
 Tags: tripwire, security, inject, advertisments
 Requires at least: 2.7.1
 Tested up to: 2.7.1
-Stable tag: 0.0.7
+Stable tag: 0.0.8
 
-Enables clients to compare their HTML with the server's, the user can be alerted to changes. This will detect technologies which alter the traffic.
+Detects in-flight modifications to the HTML, notifies users, and weblog administrators.
 
 == Description ==
 
