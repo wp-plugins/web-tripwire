@@ -153,6 +153,9 @@ if (count($results)) {
         <div class="alignleft">
 	         <button type="submit" name="op" value="add" class="button-secondary add">Add</button>
 	     </div>
+        <div class="alignright">
+	         <button type="submit" name="op" value="update" class="button-primary update">Update Signatures</button>
+	     </div>
         <br class="clear" />
     </div>
    </form>

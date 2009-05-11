@@ -3,7 +3,7 @@
 Plugin Name: Web Tripwire
 Plugin URI: http://blog.yibble.org/webtripwire/
 Description: Detect in-flight alterations made to the served pages between server and client. Allowing you to inform your users if their World-Wide-Web traffic is being modified by ISPs, ETC.
-Version: 0.0.9
+Version: 0.1.0
 Author: Nathan L. Reynolds
 Author URI: http://blog.yibble.org/
 */
@@ -30,6 +30,7 @@ Author URI: http://blog.yibble.org/
  * Include files get defined below:
  */
 require_once ( 'includes/wp-common.php');
+require_once ( 'includes/wp-gnupg.php');
 
 /**
  * Variables get defined below:
@@ -186,6 +187,7 @@ function web_tripwire_menu() {
 	add_menu_page( 'Web Tripwire Plugin Overview', 'Web Tripwire', 8, __FILE__, 'web_tripwire_overview',
 		plugins_url( 'web-tripwire/images/icon16.png' ) );
 	add_submenu_page( __FILE__, 'Web Tripwire Plugin Overview', 'Overview', 8, __FILE__, 'web_tripwire_overview' );
+   add_submenu_page( __FILE__, 'Web Tripwire Plugin Change Log', 'Change Log', 8, 'changes', 'web_tripwire_changes' );
    add_submenu_page( __FILE__, 'Web Tripwire Plugin Options', 'Options', 8, 'options', 'web_tripwire_options' );
    add_submenu_page( __FILE__, 'Web Tripwire Plugin Log', 'Log (' . $events . ')', 8, 'log', 'web_tripwire_log' );
    add_submenu_page( __FILE__, 'Web Tripwire Plugin Signatures', 'Signatures', 8, 'signatures', 'web_tripwire_signatures' );
@@ -194,6 +196,11 @@ function web_tripwire_menu() {
 
 function web_tripwire_overview() {
 	include(dirname(__FILE__) . '/pages/webtrip-overview.inc.php');    // Now display the overview screen
+	return;
+}
+
+function web_tripwire_changes() {
+	include(dirname(__FILE__) . '/pages/webtrip-changes.inc.php');    // Now display the overview screen
 	return;
 }
 
@@ -307,7 +314,19 @@ function web_tripwire_signatures() {
 			
 			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			
-			break;				
+			break;
+		case 'update':
+			array $info = verify_gpg_signature ( get_gpg_plaintext (), get_gpg_signature () )
+
+			if ( $info !== FALSE ) {
+				$message = "Verification passed, Fingerprint = " . $info['fingerprint'];
+			} else {
+				$message = "Verfication failed, Key ID = " . $info['fingerprint'];
+			}
+			
+			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
+			
+			break;			
 	}
 
 
