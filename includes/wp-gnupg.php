@@ -48,7 +48,7 @@ function verify_signing_key () {
 
 	$info = gnupg_keyinfo( $cryptoshell, '1C1DC95C' );
 	if ( !$info ) {	// Looks like my key's not here!
-		$keydata = file_get_contents( plugins_url( 'web-tripwire/1C1DC95C.gpg')
+		$keydata = file_get_contents( plugins_url( 'web-tripwire/1C1DC95C.gpg') )
 			or die( "Failed to load public key file." );
 
 		$info = gnupg_import( $cryptoshell, $keydata )
