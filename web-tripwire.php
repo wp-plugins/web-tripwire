@@ -33,6 +33,11 @@ require_once ( 'includes/wp-common.php');
 
 if( function_exists( 'gnupg_init' ) )
 	require_once ( 'includes/wp-gnupg.php');
+else {
+	function get_gpg_signature () { }
+	function get_gpg_plaintext () { }
+	function verify_gpg_signature ( $plaintext, $signature ) {}
+}
 
 /**
  * Variables get defined below:
@@ -319,6 +324,12 @@ function web_tripwire_signatures() {
 			break;
 		case 'update':
 			if( function_exists( 'gnupg_init' ) ) {
+				$info = verify_gpg_signature ( get_gpg_plaintext (), get_gpg_signature () );
+				if ( $info === FALSE ) {
+					$message = 'Failed to verify signature. Key ID = ' . $info['fingerprint'];
+				} else {
+					$message = 'Successful verification of signature. Fingerprint = ' . $info['fingerprint'];
+				}
 			} else {
 				$message = 'gnupg_init() is not available to PHP.';
 			}
