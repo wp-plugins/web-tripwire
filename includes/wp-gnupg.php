@@ -65,8 +65,9 @@ function verify_gpg_signature ( $plaintext, $signature ) {
 	var_dump($plaintext);
 	var_dump($signature);
 	
-	$info = gnupg_verify( $cryptoshell, $plaintext, $signature )
-		or die( "Unable to perform gnupg_verify()." );
+	$info = gnupg_verify( $cryptoshell, $plaintext, $signature );
+	//	or die( "Unable to perform gnupg_verify()." );
+	var_dump ($info);
 	return $info;
 }
 
