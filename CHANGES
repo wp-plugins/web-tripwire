@@ -2,6 +2,9 @@
  * ADD: An additional administration menu option to view this file. So that
 users can determine if later versions of the plugin fix any issues they might
 be expiriencing.
+ * ADD: Begun adding support for GnuPG. I'll be using this to verify central
+signature batch updates. However, I need to enable support on my own web
+server before I can start testing.
 
 0.0.9
  * FIX: Previewing posts and pages was causing multiple stream reading
