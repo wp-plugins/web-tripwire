@@ -1,0 +1,2 @@
+0.0.9
+ * FIX: Previewing posts and pages was causing multiple stream reading failures, which would bloat the httpd log to extreme proportions. Now resolved!
