@@ -3,7 +3,7 @@
 Plugin Name: Web Tripwire
 Plugin URI: http://blog.yibble.org/webtripwire/
 Description: Detect in-flight alterations made to the served pages between server and client. Allowing you to inform your users if their World-Wide-Web traffic is being modified by ISPs, ETC.
-Version: 0.0.8
+Version: 0.0.9
 Author: Nathan L. Reynolds
 Author URI: http://blog.yibble.org/
 */
