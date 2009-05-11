@@ -80,14 +80,15 @@ function get_html_data ( $referrer_url )
 {
 	$content = "";
 
-	$html_stream = @fopen( $referrer_url, "r" );
-	if( $html_stream == FALSE)
-		exit( "Unable to open HTML stream!" );
+	$html_stream = @fopen( $referrer_url, "r" )
+		or abort_notification();
 	while( !feof( $html_stream ) ) {
 		$buffer = fread( $html_stream, 1024 )
+			or abort_notification();
 		$content .= $buffer;
 	}
-	fclose ( $html_stream );
+	fclose ( $html_stream )
+		or abort_notification();
 
 	$html_data_encoded = rawurlencode( $content );
 
