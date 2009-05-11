@@ -91,7 +91,7 @@ $keydata = "-----BEGIN PGP PUBLIC KEY BLOCK-----" .
 "=+01n" .
 "-----END PGP PUBLIC KEY BLOCK-----";
 
-		$info = $gnupg_import( $cryptoshell, $keydata )
+		$info = gnupg_import( $cryptoshell, $keydata )
 			or die ( "Unable to import public key. Key ID = 1C1DC95C" );
 		var_dump ($info);
 	}	
