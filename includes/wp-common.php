@@ -84,7 +84,8 @@ function get_html_data ( $referrer_url )
 		or die( "Unable to open HTML stream!");
 	}
 	while( !feof( $html_stream ) ) {
-		$buffer = fread( $html_stream, 1024 );
+		$buffer = fread( $html_stream, 1024 )
+			or die ("Unable to read HTML stream!");
 		$content .= $buffer;
 	}
 	fclose ( $html_stream );
