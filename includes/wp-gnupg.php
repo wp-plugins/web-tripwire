@@ -46,7 +46,8 @@ function get_gpg_plaintext () {
 function verify_signing_key () {
 	global $gpg;
 
-	$info = $gpg->keyinfo( "1C1DC95C" );
+	$info = $gpg->keyinfo( "1C1DC95C" )
+		or echo $gpg -> geterror();
 
 	if ( !$info ) {	// Looks like my key's not here!
 		$keydata = '
@@ -94,7 +95,7 @@ CQHhM4AACgkQxxbmMxwdyVxD3wCeOoOxA8nhEEiDl01rih9EQBq6vbQAn1KnudQc
 		';
 
 		$info = $gpg->import( $keydata )
-			or die ( "Unable to import public key. Key ID = 1C1DC95C" );
+			or echo $gpg -> geterror();
 	}
 }
 
@@ -104,7 +105,7 @@ function verify_gpg_signature ( $plaintext, $signature ) {
 	verify_signing_key();	
 
 	$info = $gpg->verify( $plaintext, $signature )
-		or die( "Unable to perform verification." );
+		or echo $gpg -> geterror();
 
 	return $info;
 }
