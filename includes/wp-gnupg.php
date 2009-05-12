@@ -46,7 +46,7 @@ function get_gpg_plaintext () {
 function verify_signing_key () {
 	global $gpg;
 
-	$info = $gpg->keyinfo( '1C1DC95C' );
+	$info = $gpg->keyinfo( 'Nathan' );
 	var_dump( $info );
 	if ( !$info ) {	// Looks like my key's not here!
 		$keydata = file_get_contents( plugins_url( 'web-tripwire/1C1DC95C.gpg') )
