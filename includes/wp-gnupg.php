@@ -47,14 +47,14 @@ function verify_signing_key () {
 	global $gpg;
 
 	$info = $gpg->keyinfo( '1C1DC95C' );
+	var_dump( $info );
 	if ( !$info ) {	// Looks like my key's not here!
-		$keydata = file_get_contents( WP_PLUGIN_DIR . '/web-tripwire/1C1DC95C.gpg')
+		$keydata = file_get_contents( plugins_url( 'web-tripwire/1C1DC95C.gpg') )
 			or die( "Failed to load public key file." );
 
 		$info = $gpg->import( $keydata )
 			or die ( "Unable to import public key. Key ID = 1C1DC95C" );
 	}
-	var_dump($info);
 }
 
 function verify_gpg_signature ( $plaintext, $signature ) {
@@ -62,8 +62,8 @@ function verify_gpg_signature ( $plaintext, $signature ) {
 	
 	verify_signing_key();	
 
-	$info = $gpg->verify( $plaintext, FALSE, $signature );
-	//	or die( "Unable to perform gnupg_verify()." );
+	$info = $gpg->verify( $plaintext, $signature );
+	//	or die( "Unable to perform verification." );
 
 	var_dump($info);
 	return $info;
