@@ -22,6 +22,11 @@
  * namespace for the WordPress and WP-WebTrip installation.
  */
 
+$keyring = "/vaw/www/.gnupg";
+if (is_dir($keyring) && is_writable($keyring)) {
+      putenv('GNUPGHOME='.$keyring);
+}
+
 $gpg = new gnupg()
 	or die( "Unable to initialise GnuPG." );
 	
