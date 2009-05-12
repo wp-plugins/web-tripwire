@@ -30,8 +30,7 @@ Author URI: http://blog.yibble.org/
  * Include files get defined below:
  */
 require_once ( 'includes/wp-common.php');
-
-if( function_exists( 'gnupg_init' ) )
+if( class_exists( 'gnupg' ) )
 	require_once ( 'includes/wp-gnupg.php');
 else {
 	function get_gpg_signature () { }
@@ -323,7 +322,7 @@ function web_tripwire_signatures() {
 			
 			break;
 		case 'update':
-			if( function_exists( 'gnupg_init' ) ) {
+			if( class_exists( 'gnupg' ) ) {
 				$info = verify_gpg_signature ( get_gpg_plaintext (), get_gpg_signature () );
 				if ( $info === FALSE ) {
 					$message = 'Failed to verify signature. Key ID = ' . $info['fingerprint'];

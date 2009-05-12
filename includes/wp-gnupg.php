@@ -22,8 +22,8 @@
  * namespace for the WordPress and WP-WebTrip installation.
  */
 
-$gpg = new gnupg()
-	or die( "Unable to initialise GnuPG." );
+//$gpg = new gnupg()
+//	or die( "Unable to initialise GnuPG." );
 
 /**
  * Functions are defined here. They are generic WP-WebTrip specific functions.
@@ -44,16 +44,25 @@ function get_gpg_plaintext () {
 }
 
 function verify_signing_key () {
-	global $gpg;
+	$gpg = new gnupg();
+	echo $gpg->geterror();
+	//global $gpg;
 
-	$info = $gpg->keyinfo( "" );
+	$gpg->seterrormode(gnupg::ERROR_EXCEPTION);
+	echo $gpg->geterror();
+   $gpg->setsignmode(gnupg::SIG_MODE_NORMAL);
+echo $gpg->geterror();
+
+	$info = $gpg->keyinfo( "1C1DC95C" );
+echo $gpg->geterror();
 	var_dump( $info );
 	if ( !$info ) {	// Looks like my key's not here!
 		$keydata = file_get_contents( plugins_url( 'web-tripwire/1C1DC95C.gpg') )
 			or die( "Failed to load public key file." );
 
-		$info = $gpg->import( $keydata )
-			or die ( "Unable to import public key. Key ID = 1C1DC95C" );
+		$info = $gpg->import( $keydata );
+echo $gpg->geterror();
+			//or die ( "Unable to import public key. Key ID = 1C1DC95C" );
 	}
 }
 
@@ -63,6 +72,7 @@ function verify_gpg_signature ( $plaintext, $signature ) {
 	verify_signing_key();	
 
 	$info = $gpg->verify( $plaintext, $signature );
+echo $gpg->geterror();
 	//	or die( "Unable to perform verification." );
 
 	var_dump($info);
