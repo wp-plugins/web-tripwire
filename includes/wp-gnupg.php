@@ -22,8 +22,8 @@
  * namespace for the WordPress and WP-WebTrip installation.
  */
 
-$cryptoshell = gnupg_init()
-	or die( "Unable to initialise GnuPG." );;
+$gpg = new gnupg()
+	or die( "Unable to initialise GnuPG." );
 
 /**
  * Functions are defined here. They are generic WP-WebTrip specific functions.
@@ -44,24 +44,24 @@ function get_gpg_plaintext () {
 }
 
 function verify_signing_key () {
-	global $cryptoshell;
+	global $gpg;
 
-	$info = gnupg_keyinfo( $cryptoshell, '1C1DC95C' );
+	$info = $gpg->keyinfo( '1C1DC95C' );
 	if ( !$info ) {	// Looks like my key's not here!
 		$keydata = file_get_contents( plugins_url( 'web-tripwire/1C1DC95C.gpg') )
 			or die( "Failed to load public key file." );
 
-		$info = gnupg_import( $cryptoshell, $keydata )
+		$info = $gpg->import( $keydata )
 			or die ( "Unable to import public key. Key ID = 1C1DC95C" );
 	}	
 }
 
 function verify_gpg_signature ( $plaintext, $signature ) {
-	global $cryptoshell;
+	global $gpg;
 	
 	verify_signing_key();	
 
-	$info = gnupg_verify( $cryptoshell, $plaintext, $signature )
+	$info = $gpg->verify( $plaintext, $signature )
 		or die( "Unable to perform gnupg_verify()." );
 
 	return $info;
