@@ -108,6 +108,7 @@ function verify_gpg_signature ( $clearsign ) {
 	echo "verify(): " . $gpg -> geterror() . "<br>";
 	echo $clearsign . "<br>";
 	echo $plaintext . "<br>";
+	var_dump ($info);
 	return $info;
 }
 ?>
