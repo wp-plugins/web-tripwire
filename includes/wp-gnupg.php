@@ -61,7 +61,7 @@ function verify_gpg_signature ( $plaintext, $signature ) {
 	
 	verify_signing_key();	
 
-	$info = $gpg->verify( $plaintext, $signature )
+	$info = $gpg->verify( $plaintext, FALSE, $signature )
 		or die( "Unable to perform gnupg_verify()." );
 
 	return $info;
