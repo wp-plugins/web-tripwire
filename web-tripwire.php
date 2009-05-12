@@ -33,9 +33,8 @@ require_once ( 'includes/wp-common.php');
 if( class_exists( 'gnupg' ) )
 	require_once ( 'includes/wp-gnupg.php');
 else {
-	function get_gpg_signature () { }
-	function get_gpg_plaintext () { }
-	function verify_gpg_signature ( $plaintext, $signature ) {}
+	function get_gpg_clearsign () { }
+	function verify_gpg_signature ( $clearsign ) {}
 }
 
 /**

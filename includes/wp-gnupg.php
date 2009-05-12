@@ -29,20 +29,6 @@ $gpg = new gnupg()
  * Functions are defined here. They are generic WP-WebTrip specific functions.
  */
     
-function get_gpg_signature () {
-	$content = file_get_contents( 'http://svn.wp-plugins.org/web-tripwire/trunk/central-signatures.txt.asc' )
-		or die( "Unable to obtain GnuPG signature from central repository." );
-
-	return $content;
-}
-
-function get_gpg_plaintext () {
-	$content = file_get_contents( 'http://svn.wp-plugins.org/web-tripwire/trunk/central-signatures.txt' )
-		or die( "Unable to obtain signature updates from central repository." );
-
-	return $content;
-}
-
 function get_gpg_clearsign () {
 	$content = file_get_contents( 'http://svn.wp-plugins.org/web-tripwire/trunk/central-signatures.txt.asc' )
 		or die( "Unable to obtain signature updates from central repository." );
@@ -57,7 +43,7 @@ function verify_signing_key () {
 	echo "keying(): " . $gpg -> geterror() . "<br>";
 
 	if ( !$info ) {	// Looks like my key's not here!
-		$keydata = '
+$keydata = '
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.9 (GNU/Linux)
 
@@ -99,7 +85,7 @@ CQHhM4AACgkQxxbmMxwdyVxD3wCeOoOxA8nhEEiDl01rih9EQBq6vbQAn1KnudQc
 +/7gLUHs+GWDGxmJ4Hyf
 =+01n
 -----END PGP PUBLIC KEY BLOCK-----
-		';
+';
 
 		$info = $gpg->import( $keydata );
 		echo "import(): " . $gpg -> geterror() . "<br>";
@@ -108,14 +94,15 @@ CQHhM4AACgkQxxbmMxwdyVxD3wCeOoOxA8nhEEiDl01rih9EQBq6vbQAn1KnudQc
 
 //function verify_gpg_signature ( $plaintext, $signature ) {
 function verify_gpg_signature ( $clearsign ) {
-	global $gpg;
-	
 	verify_signing_key();	
 
-	$info = $gpg->verify( $clearsign, FALSE );
-	echo "verify(): " . $gpg -> geterror() . "<br>";
-	//echo $plaintext . "<br>" . $signature;
+	global $gpg;
+	$plaintext = "";
 
+	$info = $gpg->verify( $clearsign, FALSE, $plaintext);
+	echo "verify(): " . $gpg -> geterror() . "<br>";
+	echo $clearsign . "<br>";
+	echo $plaintext . "<br>";
 	return $info;
 }
 ?>
