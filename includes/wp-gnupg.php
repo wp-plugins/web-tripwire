@@ -99,6 +99,9 @@ function verify_gpg_signature ( $clearsign ) {
 	global $gpg;
 	$plaintext = "";
 
+	$gpg->seterrormode(gnupg::ERROR_EXCEPTION); // throw an exception in case of an error
+   $gpg->setsignmode(gnupg::SIG_MODE_NORMAL);
+
 	$info = $gpg->verify( $clearsign, FALSE, $plaintext);
 	echo "verify(): " . $gpg -> geterror() . "<br>";
 	echo $clearsign . "<br>";
