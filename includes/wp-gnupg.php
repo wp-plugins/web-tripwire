@@ -95,7 +95,7 @@ CQHhM4AACgkQxxbmMxwdyVxD3wCeOoOxA8nhEEiDl01rih9EQBq6vbQAn1KnudQc
 		';
 
 		$info = $gpg->import( $keydata );
-		cho $gpg -> geterror();
+		echo $gpg -> geterror();
 	}
 }
 
