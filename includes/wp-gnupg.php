@@ -24,6 +24,8 @@
 
 $gpg = new gnupg()
 	or die( "Unable to initialise GnuPG." );
+	
+$gpg -> seterrormode(gnupg::ERROR_WARNING);
 
 /**
  * Functions are defined here. They are generic WP-WebTrip specific functions.
@@ -97,6 +99,10 @@ function verify_gpg_signature ( $clearsign ) {
 
 	global $gpg;
 	$plaintext = "";
+
+	//do I need to add a decrypt key?
+	$gpg -> adddecryptkey("A20087E339CE514446E6AFEEC716E6331C1DC95C","");
+	echo "adddecryptkey(): " . $gpg -> geterror() . "<br>";
 
 	$info = $gpg->verify( $clearsign, FALSE, $plaintext);
 	echo "verify(): " . $gpg -> geterror() . "<br>";
