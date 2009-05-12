@@ -47,7 +47,7 @@ function verify_signing_key () {
 	global $gpg;
 
 	$info = $gpg->keyinfo( "1C1DC95C" );
-	echo "keying(): " . $gpg -> geterror();
+	echo "keying(): " . $gpg -> geterror() . "<br>";
 
 	if ( !$info ) {	// Looks like my key's not here!
 		$keydata = '
@@ -95,7 +95,7 @@ CQHhM4AACgkQxxbmMxwdyVxD3wCeOoOxA8nhEEiDl01rih9EQBq6vbQAn1KnudQc
 		';
 
 		$info = $gpg->import( $keydata );
-		echo "import(): " . $gpg -> geterror();
+		echo "import(): " . $gpg -> geterror() . "<br>";
 	}
 }
 
@@ -105,7 +105,8 @@ function verify_gpg_signature ( $plaintext, $signature ) {
 	verify_signing_key();	
 
 	$info = $gpg->verify( $plaintext, $signature );
-	echo "verify(): " . $gpg -> geterror();
+	echo "verify(): " . $gpg -> geterror() . "<br>";
+	echo $plaintext . "<br>" . $signature;
 
 	return $info;
 }
