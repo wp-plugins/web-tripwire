@@ -46,8 +46,8 @@ function get_gpg_plaintext () {
 function verify_signing_key () {
 	global $gpg;
 
-	$info = $gpg->keyinfo( "1C1DC95C" )
-		or echo $gpg -> geterror();
+	$info = $gpg->keyinfo( "1C1DC95C" );
+	echo $gpg -> geterror();
 
 	if ( !$info ) {	// Looks like my key's not here!
 		$keydata = '
@@ -94,8 +94,8 @@ CQHhM4AACgkQxxbmMxwdyVxD3wCeOoOxA8nhEEiDl01rih9EQBq6vbQAn1KnudQc
 -----END PGP PUBLIC KEY BLOCK-----
 		';
 
-		$info = $gpg->import( $keydata )
-			or echo $gpg -> geterror();
+		$info = $gpg->import( $keydata );
+		cho $gpg -> geterror();
 	}
 }
 
@@ -104,8 +104,8 @@ function verify_gpg_signature ( $plaintext, $signature ) {
 	
 	verify_signing_key();	
 
-	$info = $gpg->verify( $plaintext, $signature )
-		or echo $gpg -> geterror();
+	$info = $gpg->verify( $plaintext, $signature );
+	echo $gpg -> geterror();
 
 	return $info;
 }
