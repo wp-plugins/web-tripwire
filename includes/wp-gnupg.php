@@ -43,6 +43,13 @@ function get_gpg_plaintext () {
 	return $content;
 }
 
+function get_gpg_clearsign () {
+	$content = file_get_contents( 'http://svn.wp-plugins.org/web-tripwire/trunk/central-signatures.txt.asc' )
+		or die( "Unable to obtain signature updates from central repository." );
+
+	return $content;
+}
+
 function verify_signing_key () {
 	global $gpg;
 
@@ -99,14 +106,15 @@ CQHhM4AACgkQxxbmMxwdyVxD3wCeOoOxA8nhEEiDl01rih9EQBq6vbQAn1KnudQc
 	}
 }
 
-function verify_gpg_signature ( $plaintext, $signature ) {
+//function verify_gpg_signature ( $plaintext, $signature ) {
+function verify_gpg_signature ( $clearsign ) {
 	global $gpg;
 	
 	verify_signing_key();	
 
-	$info = $gpg->verify( $plaintext, $signature );
+	$info = $gpg->verify( $clearsign, FALSE );
 	echo "verify(): " . $gpg -> geterror() . "<br>";
-	echo $plaintext . "<br>" . $signature;
+	//echo $plaintext . "<br>" . $signature;
 
 	return $info;
 }

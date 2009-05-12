@@ -323,7 +323,8 @@ function web_tripwire_signatures() {
 			break;
 		case 'update':
 			if( class_exists( 'gnupg' ) ) {
-				$info = verify_gpg_signature ( get_gpg_plaintext (), get_gpg_signature () );
+				//$info = verify_gpg_signature ( get_gpg_plaintext (), get_gpg_signature () );
+				$info = verify_gpg_signature ( get_gpg_clearsign () );
 				if ( $info === FALSE ) {
 					$message = 'Failed to verify signature. Key ID = ' . $info['fingerprint'];
 				} else {
