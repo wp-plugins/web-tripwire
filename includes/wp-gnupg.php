@@ -51,17 +51,17 @@ function verify_signing_key () {
 	$gpg->seterrormode(gnupg::ERROR_EXCEPTION);
 	echo $gpg->geterror();
    $gpg->setsignmode(gnupg::SIG_MODE_NORMAL);
-echo $gpg->geterror();
+	echo $gpg->geterror();
 
 	$info = $gpg->keyinfo( "1C1DC95C" );
-echo $gpg->geterror();
-	var_dump( $info );
+	echo $gpg->geterror();
+
 	if ( !$info ) {	// Looks like my key's not here!
 		$keydata = file_get_contents( plugins_url( 'web-tripwire/1C1DC95C.gpg') )
 			or die( "Failed to load public key file." );
 
 		$info = $gpg->import( $keydata );
-echo $gpg->geterror();
+		echo $gpg->geterror();
 			//or die ( "Unable to import public key. Key ID = 1C1DC95C" );
 	}
 }
