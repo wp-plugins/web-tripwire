@@ -115,17 +115,16 @@ function verify_gpg_clearsign ( $clearsign ) {
 }
 
 function verify_gpg_detached ( $localpath, $localfile ) {
-	verify_signing_key();	
-
+	verify_signing_key();
+		
+	global $gpg;
 	$plaintext = file_get_contents (	$localpath . '/' . $localfile )
 		or die( "Unable to read local file $localpath/$localfile." );
 	$signature = file_get_contents ( 'http://svn.wp-plugins.org/web-tripwire/trunk/crypto/' . $localfile . '.asc' )
 		or die( "Unable to read signature $localfile.asc from central repository." );	
-
-	global $gpg;
 	
 	$info = $gpg->verify( $plaintext, $signature );
-	var_dump ($info);
+
 	if ( $info[0]['fingerprint'] == 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
 		return $info;
 	} else {
