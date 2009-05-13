@@ -203,7 +203,7 @@ function web_tripwire_menu() {
 function web_tripwire_overview() {
 	switch ($_REQUEST['op']) {
 		case 'verify':
-			if ( verify_gpg_detached( WP_PLUGIN_DIR . 'web-tripwire', 'webtrip-notifier.php' ) == FALSE ) {
+			if ( verify_gpg_detached( WP_PLUGIN_DIR . '/web-tripwire', 'webtrip-notifier.php' ) == FALSE ) {
 				$message = "Failed to verify installation!";
 				break;
 			} else {
