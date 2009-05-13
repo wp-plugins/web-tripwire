@@ -124,9 +124,12 @@
 		</tr>		
 	</table>
 
-	<p class="submit">
-		<input type="submit" name="Submit" value="<?php _e('Update Options', 'mt_trans_domain' ) ?>" class="button-primary" />
-	</p>
+	<div class="tablenav">
+		<div class="alignright">
+	   	<button type="submit" name="op" value="update" class="button-primary update">Update Options</button>
+	   </div>
+		<br class="clear" />
+	</div>
 
 </form>
 </div>

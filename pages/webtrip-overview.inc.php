@@ -52,9 +52,13 @@ verify signature updates from the WordPress Subversion repository.</p>
 		<br class="clear" />
 	</div>
 </form>
-	<?php } } else { ?>
-	<p><strong>PECL GnuPG Module</strong> not found. Don't panic! Only some features will be inaccessible. You will not 
+<?php	} else { ?>
+<p>In order access the GnuPG-based cryptographic functionality, you will need to enable it in the <strong>Options</strong> sub-menu.</p>
+<?php } else { ?>
+<p><strong>PECL GnuPG Module</strong> not found. Don't panic! Only some features will be inaccessible. You will not 
 be able to cryptographically validate the integrity of your installation against the WordPress Subversion repository, 
-and you will not be able to verify signature updates from the WordPress Subversion repository.</a>.</p>
+and you will not be able to verify signature updates from the WordPress Subversion repository.</p>
+<p>This functionality is also very experimental. In fact, it's still undergoing a lot development to get it to a 
+functional level. So you <em>really</em> aren't missing out.</p>
 <?php } ?>
 </div>
