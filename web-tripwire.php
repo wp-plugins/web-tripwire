@@ -206,10 +206,13 @@ function web_tripwire_overview() {
 			if ( verify_gpg_detached( WP_PLUGIN_DIR . '/web-tripwire', 'webtrip-notifier.php' ) == FALSE ) {
 				$message = "Failed to verify installation!";
 				break;
-			} else {
+			} else if ( $info[0]['fingerprint'] !== 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
 				$message = "Installation verified successfully!";
+			} else {
+				$message = "An issue was detected with the signature!";
+				break;
 			}
-			?><div class="updated"><p><strong>Log cleared.</strong></p></div><?php
+			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			break;
 	}
 

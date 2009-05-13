@@ -37,7 +37,7 @@ $gpg -> seterrormode(gnupg::ERROR_WARNING);
  */
     
 function get_signature_update () {
-	$content = file_get_contents( 'http://svn.wp-plugins.org/web-tripwire/trunk/central-signatures.txt.asc' )
+	$content = file_get_contents( 'http://svn.wp-plugins.org/web-tripwire/trunk/crypto/central-signatures.txt.asc' )
 		or die( "Unable to obtain signature updates from central repository." );
 
 	return $content;
@@ -110,7 +110,7 @@ function verify_gpg_clearsign ( $clearsign ) {
 		$info[0]['plaintext'] = $plaintext;
 		return $info;
 	} else {
-		return false;
+		return FALSE;
 	} 
 }
 
@@ -129,7 +129,7 @@ function verify_gpg_detached ( $localpath, $localfile ) {
 	if ($info[0]['fingerprint'] == 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
 		return $info;
 	} else {
-		return false;
+		return FALSE;
 	}
 }
 ?>
