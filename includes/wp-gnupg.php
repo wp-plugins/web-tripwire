@@ -125,8 +125,8 @@ function verify_gpg_detached ( $localpath, $localfile ) {
 	global $gpg;
 	
 	$info = $gpg->verify( $plaintext, $signature );
-
-	if ($info[0]['fingerprint'] == 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
+	var_dump ($info);
+	if ( $info[0]['fingerprint'] == 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
 		return $info;
 	} else {
 		return FALSE;
