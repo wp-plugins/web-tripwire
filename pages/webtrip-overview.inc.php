@@ -39,11 +39,19 @@ Internet connectivity and their security process.</p>
 
 <?php
 	if( function_exists( 'gnupg_init' ) ) { 
-	?><p><strong>gnupg_init()</strong> found, centralised updating of signatures is supported.</p> <?php
-	} else {
-	?><p><strong>gnupg_init()</strong> not found, unable to support centralised updating of signatures. This doesn't 
-prevent you from using the plugin, but will prevent you from subscribing to signature updates. You can assess the 
-signature updates manually by reviewing <a href="http://svn.wp-plugins.org/web-tripwire/trunk/central-signatures.txt">this file</a>.</p> <?php
-	} ?>
-		
+	?><p><strong>PECL GnuPG Module</strong> found. GnuPG-based cryptographic functionality is now accessible. This includes 
+the ability to verify the integrity of the installation against the WordPress Subversion repository, and the ability to 
+verify signature updates from the WordPress Subversion repository.</p>
+
+	<div class="tablenav">
+		<div class="alignleft">
+	   	<button type="submit" name="op" value="verify" class="button-primary verify">Verify Installation</button>
+	   </div>
+		<br class="clear" />
+	</div>
+	<?php } else { ?>
+	<p><strong>PECL GnuPG Module</strong> not found. Don't panic! Only some features will be inaccessible. You will not 
+be able to cryptographically validate the integrity of your installation against the WordPress Subversion repository, 
+and you will not be able to verify signature updates from the WordPress Subversion repository.</a>.</p>
+<?php } ?>
 </div>

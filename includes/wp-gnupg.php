@@ -36,7 +36,7 @@ $gpg -> seterrormode(gnupg::ERROR_WARNING);
  * Functions are defined here. They are generic WP-WebTrip specific functions.
  */
     
-function get_gpg_clearsign () {
+function get_signature_update () {
 	$content = file_get_contents( 'http://svn.wp-plugins.org/web-tripwire/trunk/central-signatures.txt.asc' )
 		or die( "Unable to obtain signature updates from central repository." );
 
@@ -98,7 +98,7 @@ CQHhM4AACgkQxxbmMxwdyVxD3wCeOoOxA8nhEEiDl01rih9EQBq6vbQAn1KnudQc
 	}
 }
 
-function verify_gpg_signature ( $clearsign ) {
+function verify_gpg_clearsign ( $clearsign ) {
 	verify_signing_key();	
 
 	global $gpg;
@@ -106,8 +106,30 @@ function verify_gpg_signature ( $clearsign ) {
 	
 	$info = $gpg->verify( $clearsign, FALSE, $plaintext );
 
-	$info[0]['plaintext'] = $plaintext;
-	//var_dump ($info);
-	return $info;
+	if ($info[0]['fingerprint'] == 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
+		$info[0]['plaintext'] = $plaintext;
+		return $info;
+	} else {
+		return false;
+	} 
+}
+
+function verify_gpg_detached ( $localpath, $localfile ) {
+	verify_signing_key();	
+
+	$plaintext = file_get_contents (	$localpath . '/' . $localfile )
+		or die( "Unable to read local file $localpath/$localfile." );
+	$signature = file_get_contents ( 'http://svn.wp-plugins.org/web-tripwire/trunk/' . $localfile . '.asc' )
+		or die( "Unable to read signature $localfile.asc from central repository." );	
+
+	global $gpg;
+	
+	$info = $gpg->verify( $plaintext, $signature );
+
+	if ($info[0]['fingerprint'] == 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
+		return $info;
+	} else {
+		return false;
+	}
 }
 ?>

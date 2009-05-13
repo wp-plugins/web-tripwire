@@ -33,8 +33,9 @@ require_once ( 'includes/wp-common.php');
 if( class_exists( 'gnupg' ) )
 	require_once ( 'includes/wp-gnupg.php');
 else {
-	function get_gpg_clearsign () { }
-	function verify_gpg_signature ( $clearsign ) {}
+	function get_signature_update () { }
+	function verify_gpg_clearsign ( $clearsign ) {}
+	function verify_gpg_detached ( $localpath, $localfile ) {}
 }
 
 /**
@@ -200,6 +201,18 @@ function web_tripwire_menu() {
 }
 
 function web_tripwire_overview() {
+	switch ($_REQUEST['op']) {
+		case 'verify':
+			if ( verify_gpg_detached( WP_PLUGIN_DIR . 'web-tripwire', 'webtrip-notifier.php' ) == FALSE {
+				$message = "Failed to verify installation!";
+				break;
+			} else {
+				$message = "Installation verified successfully!";
+			}
+			?><div class="updated"><p><strong>Log cleared.</strong></p></div><?php
+			break;
+	}
+
 	include(dirname(__FILE__) . '/pages/webtrip-overview.inc.php');    // Now display the overview screen
 	return;
 }
@@ -323,7 +336,7 @@ function web_tripwire_signatures() {
 		case 'update':
 			if( class_exists( 'gnupg' ) ) {
 				//$info = verify_gpg_signature ( get_gpg_plaintext (), get_gpg_signature () );
-				$info = verify_gpg_signature ( get_gpg_clearsign () );
+				$info = verify_gpg_clearsign ( get_signature_update () );
 				if ( $info[0]['fingerprint'] !== 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
 					$message = 'Failed to verify signature!';
 				} else {
