@@ -119,7 +119,7 @@ function verify_gpg_detached ( $localpath, $localfile ) {
 
 	$plaintext = file_get_contents (	$localpath . '/' . $localfile )
 		or die( "Unable to read local file $localpath/$localfile." );
-	$signature = file_get_contents ( 'http://svn.wp-plugins.org/web-tripwire/trunk/' . $localfile . '.asc' )
+	$signature = file_get_contents ( 'http://svn.wp-plugins.org/web-tripwire/trunk/crypto/' . $localfile . '.asc' )
 		or die( "Unable to read signature $localfile.asc from central repository." );	
 
 	global $gpg;
