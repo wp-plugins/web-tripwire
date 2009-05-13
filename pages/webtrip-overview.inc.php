@@ -42,13 +42,14 @@ Internet connectivity and their security process.</p>
 	?><p><strong>PECL GnuPG Module</strong> found. GnuPG-based cryptographic functionality is now accessible. This includes 
 the ability to verify the integrity of the installation against the WordPress Subversion repository, and the ability to 
 verify signature updates from the WordPress Subversion repository.</p>
-
+<form method="post" action="">
 	<div class="tablenav">
-		<div class="alignleft">
+		<div class="alignright">
 	   	<button type="submit" name="op" value="verify" class="button-primary verify">Verify Installation</button>
 	   </div>
 		<br class="clear" />
 	</div>
+</form>
 	<?php } else { ?>
 	<p><strong>PECL GnuPG Module</strong> not found. Don't panic! Only some features will be inaccessible. You will not 
 be able to cryptographically validate the integrity of your installation against the WordPress Subversion repository, 

@@ -126,7 +126,6 @@ if (count($results)) {
         <div class="alignleft">
 	         <button type="submit" name="op" value="refresh" class="button-secondary refresh">Refresh</button>
         		<button type="submit" name="op" value="delete" class="button-secondary delete">Delete</button>
-        		<button type="submit" name="op" value="clear" class="button-primary delete">Clear All</button>
 		  </div>
         <br class="clear" />
     </div>
