@@ -124,7 +124,7 @@ function verify_gpg_detached ( $localpath, $localfile ) {
 		or die( "Unable to read signature $localfile.asc from central repository." );	
 	
 	$info = $gpg->verify( $signature, $plaintext );
-
+	var_dump ($info);
 	if ( $info[0]['fingerprint'] == 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
 		return TRUE;
 	} else {
