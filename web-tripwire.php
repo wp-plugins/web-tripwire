@@ -176,6 +176,7 @@ function webtrip_install () {
    add_option( "trip_cache" , '2' );									// Caching option.
    add_option( "trip_cache_expire" , '60');							// Expiry time.
    add_option( "trip_items_per_page" , '5');							// Items per page -- clearly!
+   add_option( "trip_gpg" , '0');										// GnuPG
 }
 
 /**
@@ -203,14 +204,19 @@ function web_tripwire_menu() {
 function web_tripwire_overview() {
 	switch ($_REQUEST['op']) {
 		case 'verify':
-			if ( verify_gpg_detached( WP_PLUGIN_DIR . '/web-tripwire', 'webtrip-notifier.php' ) ) {
-				$message = "Installation verified successfully!";
-				break;
+			if( class_exists( 'gnupg' ) && get_option( 'trip_gpg' ) ) {
+				if ( verify_gpg_detached( WP_PLUGIN_DIR . '/web-tripwire', 'webtrip-notifier.php' ) ) {
+					$message = "Installation verified successfully!";
+					break;
+				} else {
+					$message = "Installation failed!";
+					break;
+				}
+				?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			} else {
-				$message = "Installation failed!";
-				break;
+				$message = 'gnupg_init() is not available to PHP.';
+				?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			}
-			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			break;
 	}
 
@@ -236,6 +242,7 @@ function web_tripwire_options() {
 		update_option( 'trip_cache', $_POST[ 'trip_cache' ] );
 		update_option( 'trip_cache_expire', $_POST[ 'trip_cache_expire' ] );
 		update_option( 'trip_items_per_page', $_POST[ 'trip_items_per_page' ] );
+		update_option( 'trip_gpg', $_POST[ 'trip_gpg' ] );
 
 ?> <div class="updated"><p><strong>Options saved.</strong></p></div> <?php
 
@@ -335,7 +342,7 @@ function web_tripwire_signatures() {
 			
 			break;
 		case 'update':
-			if( class_exists( 'gnupg' ) ) {
+			if( class_exists( 'gnupg' ) && get_option ( 'trip_gpg' ) ) {
 				//$info = verify_gpg_signature ( get_gpg_plaintext (), get_gpg_signature () );
 				$info = verify_gpg_clearsign ( get_signature_update () );
 				if ( $info[0]['fingerprint'] !== 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {

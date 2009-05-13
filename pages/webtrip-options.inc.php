@@ -95,6 +95,20 @@
 
 			</fieldset></td>
 		</tr>
+<?php if( class_exists( 'gnupg' ) ) { ?>
+		<tr valign="top">
+			<th scope="row">GnuPG </th>
+			<td><fieldset><legend class="hidden">GnuPG </legend>
+
+			<input id="trip_gpg_on" type="radio" name="trip_gpg" value="0" <?php if (get_option('trip_gpg') == "1") { echo "checked=\"checked\""; } ?> />
+			<label for="trip_gpg_on">Enable GnuPG functionality (EXPERIMENTAL!)</label><br />
+
+			<input id="trip_gpg_off" type="radio" name="trip_gpg" value="0" <?php if (get_option('trip_gpg') == "0") { echo "checked=\"checked\""; } ?> />
+			<label for="trip_gpg_off">Disable GnuPG functionality</label><br />
+
+			</fieldset></td>
+		</tr>	
+<?php } ?>
 		<tr valign="top">
 			<th scope="row">Miscellaneous </th>
 			<td><fieldset><legend class="hidden">Miscellaneous </legend>

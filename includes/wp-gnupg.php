@@ -123,7 +123,7 @@ function verify_gpg_detached ( $localpath, $localfile ) {
 	$signature = file_get_contents ( 'http://svn.wp-plugins.org/web-tripwire/trunk/crypto/' . $localfile . '.asc' )
 		or die( "Unable to read signature $localfile.asc from central repository." );	
 	
-	$info = $gpg->verify( $signature, $plaintext );
+	$info = $gpg->verify( $plaintext, $signature );
 	var_dump ($info);
 	if ( $info[0]['fingerprint'] == 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
 		return TRUE;
