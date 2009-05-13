@@ -22,14 +22,14 @@
  * namespace for the WordPress and WP-WebTrip installation.
  */
 
-$keyring = "/vaw/www/.gnupg/";
-if (is_dir($keyring) && is_writable($keyring)) {
-      putenv('GNUPGHOME='.$keyring);
-}
+$CONFIG['gnupg_home'] = '/var/www/.gnupg';
 
 $gpg = new gnupg()
 	or die( "Unable to initialise GnuPG." );
-	
+
+putenv("GNUPGHOME={$CONFIG['gnupg_home']}");
+
+
 $gpg -> seterrormode(gnupg::ERROR_WARNING);
 
 /**
@@ -47,9 +47,9 @@ function verify_signing_key () {
 	global $gpg;
 
 	$info = $gpg->keyinfo( "1C1DC95C" );
-	echo "keying(): " . $gpg -> geterror() . "<br>";
 
 	if ( !$info ) {	// Looks like my key's not here!
+	
 $keydata = '
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v1.4.9 (GNU/Linux)
@@ -95,7 +95,6 @@ CQHhM4AACgkQxxbmMxwdyVxD3wCeOoOxA8nhEEiDl01rih9EQBq6vbQAn1KnudQc
 ';
 
 		$info = $gpg->import( $keydata );
-		echo "import(): " . $gpg -> geterror() . "<br>";
 	}
 }
 
@@ -104,16 +103,11 @@ function verify_gpg_signature ( $clearsign ) {
 
 	global $gpg;
 	$plaintext = "";
+	
+	$info = $gpg->verify( $clearsign, FALSE, $plaintext );
 
-	//do I need to add a decrypt key?
-	$gpg -> adddecryptkey("A20087E339CE514446E6AFEEC716E6331C1DC95C","");
-	echo "adddecryptkey(): " . $gpg -> geterror() . "<br>";
-
-	$info = $gpg->verify( $clearsign, FALSE, $plaintext);
-	echo "verify(): " . $gpg -> geterror() . "<br>";
-	echo $clearsign . "<br>";
-	echo $plaintext . "<br>";
-	var_dump ($info);
+	$info[0]['plaintext'] = $plaintext;
+	//var_dump ($info);
 	return $info;
 }
 ?>
