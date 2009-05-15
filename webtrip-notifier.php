@@ -34,7 +34,7 @@ $will_notify = 0;
  * to identify the cause(s) of the modification(s).
  */
 
-$results = $wpdb->get_results( "SELECT * FROM " . $wpdb->prefix . "wtunknown", ARRAY_A );
+$results = $wpdb->get_results( "SELECT * FROM " . $wpdb->prefix . "wtsignatures", ARRAY_A );
 
 $likely_causes = array();
 
