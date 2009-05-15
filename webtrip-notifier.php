@@ -112,7 +112,7 @@ END;
 
 if ( $signature_hit ) {
 	echo "<ul>\n";
-	foreeach( $likely_causes as $likely_cause ) {	
+	foreach( $likely_causes as $likely_cause ) {	
 		echo "<li>Detected \"" . $likely_cause['detect'] . "\", " . $likely_cause['message'] . "</li>\n";
 	}
 	echo "</ul>\n";
