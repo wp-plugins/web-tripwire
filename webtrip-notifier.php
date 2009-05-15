@@ -34,8 +34,7 @@ $will_notify = 0;
  * to identify the cause(s) of the modification(s).
  */
 
-$signature_table_name = $wpdb->prefix . "wtsignatures";
-$results = $wpdb->get_results( "SELECT * FROM $signature_table_name", ARRAY_A );
+$results = $wpdb->get_results( "SELECT * FROM " . $wpdb->prefix . "wtunknown", ARRAY_A );
 
 $likely_causes = array();
 
@@ -44,8 +43,6 @@ foreach ( $results as $row ) {
 		
 		// Copy the signature data to a seperate array for the report.
 		array_push( $likely_causes, $row );
-		//$likely_cause[$i]['detect'] = $row['detect'];
-		//$likely_cause[$i]['message'] = $row['message'];
 	   
 	   // Determine if notification precedence.
 		$will_notify = $will_notify || $row['notify'];
@@ -63,13 +60,13 @@ foreach ( $results as $row ) {
 switch( get_option( 'trip_logging' ) ) {
 	case '0':	// Disable all logging
 		break;
-	case '1':	// Enable logging of unknowns
+	case '2':	// Enable logging of all
+		log_modification( $_REQUEST['target'], $_REQUEST['actualHTML'] );
+		break;
+	default:	// Enable logging of unknowns
 		if ( !$signature_hit ) {
 			log_modification( $_REQUEST['target'], $_REQUEST['actualHTML'] );
 		}
-		break;
-	case '2':	// Enable logging of all
-		log_modification( $_REQUEST['target'], $_REQUEST['actualHTML'] );
 		break;
 }
 
@@ -81,12 +78,6 @@ switch( get_option( 'trip_notify' ) ) {
 	case '0':	// Disable all notifications
 		abort_notification();
 		break;
-	case '1': 	// Enable Only urgent modifications
-		if ( $will_notify )
-			continue;
-		else
-			abort_notification();
-		break;
 	case '2':	// Enable urgent and unclassified [FIXME]
 		if ( !$signature_hit )
 			$will_notify = 1;
@@ -96,6 +87,12 @@ switch( get_option( 'trip_notify' ) ) {
 	case '3':	// Enable all.
 		$will_notify = 1;
 		break;			
+	default: 	// Enable Only urgent modifications
+		if ( $will_notify )
+			continue;
+		else
+			abort_notification();
+		break;
 }
 
 echo <<<END

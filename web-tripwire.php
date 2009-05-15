@@ -177,6 +177,7 @@ function webtrip_install () {
    add_option( "trip_cache_expire" , '60');							// Expiry time.
    add_option( "trip_items_per_page" , '5');							// Items per page -- clearly!
    add_option( "trip_gpg" , '0');										// GnuPG
+   add_option( "trip_javascript_element" , '0');					// Where to place the notifier toolbar.
 }
 
 /**
@@ -193,12 +194,18 @@ function web_tripwire_menu() {
 
 	add_menu_page( 'Web Tripwire Plugin Overview', 'Web Tripwire', 8, __FILE__, 'web_tripwire_overview',
 		plugins_url( 'web-tripwire/images/icon16.png' ) );
-	add_submenu_page( __FILE__, 'Web Tripwire Plugin Overview', 'Overview', 8, __FILE__, 'web_tripwire_overview' );
-   add_submenu_page( __FILE__, 'Web Tripwire Plugin Change Log', 'Change Log', 8, 'changes', 'web_tripwire_changes' );
-   add_submenu_page( __FILE__, 'Web Tripwire Plugin Options', 'Options', 8, 'options', 'web_tripwire_options' );
-   add_submenu_page( __FILE__, 'Web Tripwire Plugin Log', 'Log (' . $events . ')', 8, 'log', 'web_tripwire_log' );
-   add_submenu_page( __FILE__, 'Web Tripwire Plugin Signatures', 'Signatures', 8, 'signatures', 'web_tripwire_signatures' );
-   add_submenu_page( __FILE__, 'Web Tripwire Plugin Support Forums', 'Support Forums', 8, 'forums', 'web_tripwire_forums' );
+	add_submenu_page( __FILE__, 'Web Tripwire Plugin Overview', 'Overview', 8, __FILE__,
+		'web_tripwire_overview' );
+   add_submenu_page( __FILE__, 'Web Tripwire Plugin Change Log', 'Change Log', 8, 'changes',
+   	'web_tripwire_changes' );
+   add_submenu_page( __FILE__, 'Web Tripwire Plugin Options', 'Options', 8, 'options',
+   	'web_tripwire_options' );
+   add_submenu_page( __FILE__, 'Web Tripwire Plugin Log', 'Log (' . $events . ')', 8, 'log',
+   	'web_tripwire_log' );
+   add_submenu_page( __FILE__, 'Web Tripwire Plugin Signatures', 'Signatures', 8, 'signatures',
+   	'web_tripwire_signatures' );
+   add_submenu_page( __FILE__, 'Web Tripwire Plugin Support Forums', 'Support Forums', 8, 'forums',
+   	'web_tripwire_forums' );
 }
 
 function web_tripwire_overview() {
@@ -214,7 +221,7 @@ function web_tripwire_overview() {
 				}
 				?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			} else {
-				$message = 'gnupg_init() is not available to PHP.';
+				$message = 'PECL GnuPG Module is not available to PHP.';
 				?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			}
 			break;
@@ -225,15 +232,15 @@ function web_tripwire_overview() {
 }
 
 function web_tripwire_changes() {
-	include(dirname(__FILE__) . '/pages/webtrip-changes.inc.php');    // Now display the overview screen
+	include(dirname(__FILE__) . '/pages/webtrip-changes.inc.php');    // Now display the changelog screen
 	return;
 }
 
 function web_tripwire_options() {
+
 /** See if the user has posted us some information
-  * If they did, this hidden field will be set to 'Y'
-  */
-  
+ * If they did, this hidden field will be set to 'Y'
+ */
 	if( $_POST[ 'trip_submit_hidden' ] == 'Y' ) {
 		// Save the posted value in the database
 		update_option( 'trip_notify', $_POST[ 'trip_notify' ] );
@@ -243,6 +250,7 @@ function web_tripwire_options() {
 		update_option( 'trip_cache_expire', $_POST[ 'trip_cache_expire' ] );
 		update_option( 'trip_items_per_page', $_POST[ 'trip_items_per_page' ] );
 		update_option( 'trip_gpg', $_POST[ 'trip_gpg' ] );
+		update_option( 'trip_javascript_element', $_POST[ 'trip_javascript_element' ] );
 
 ?> <div class="updated"><p><strong>Options saved.</strong></p></div> <?php
 
@@ -271,18 +279,17 @@ function web_tripwire_log() {
 				$ids = array($ids);
 			}
 			foreach ($ids as $id) {
-				$result =& $wpdb->get_results($wpdb->prepare("SELECT * FROM `".$wpdb->prefix."wtunknown` WHERE `id` = %d", $id));
+				$result =& $wpdb->get_results($wpdb->prepare("SELECT * FROM `".$wpdb->prefix."wtunknown` " . 
+					"WHERE `id` = %d", $id));
 				if (!$result) {
-					$errors[] = 'The selected entries were not found.';
+					$message = 'The selected entries were not found.';
 				} else {
 					$result =& $result[0];
 					$wpdb->query($wpdb->prepare("DELETE FROM `".$wpdb->prefix."wtunknown` WHERE `id` = %d", $id));
 				}
 				$message = 'The selected entries were deleted.';
 			}
-			
 			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
-			
 			break;			
 	}
 	
@@ -324,9 +331,7 @@ function web_tripwire_signatures() {
 				}
 					$message = 'The selected signatures were deleted.';
 			}
-			
 			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
-			
 			break;
 		case 'add':
 			if ( !empty( $_REQUEST['detect'] ) && !empty( $_REQUEST['regex'] ) && !empty( $_REQUEST['message'] ) ) {
@@ -337,9 +342,7 @@ function web_tripwire_signatures() {
 			} else {
 				$message = 'All fields must be completed.';
 			}
-			
 			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
-			
 			break;
 		case 'update':
 			if( class_exists( 'gnupg' ) && get_option ( 'trip_gpg' ) ) {
@@ -351,14 +354,11 @@ function web_tripwire_signatures() {
 					$message = 'Successful verification of signature. Fingerprint = ' . $info[0]['fingerprint'];
 				}
 			} else {
-				$message = 'gnupg_init() is not available to PHP.';
+				$message = 'PECL GnuPG Module is not available to PHP.';
 			}
-
 			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
-			
 			break;			
 	}
-
 
 	$start = ($page-1)*$items_per_page;
 	$end = $page*$items_per_page;

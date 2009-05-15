@@ -1,12 +1,18 @@
 0.1.0
  * ADD: An additional administration menu option to view this file. So that
-users can determine if later versions of the plugin fix any issues they might
-be expiriencing.
+        users can determine if later versions of the plugin fix any issues
+        they might be experiencing.
+
  * ADD: Begun adding support for GnuPG. I'll be using this to verify central
-signature batch updates. However, I need to enable support on my own web
-server before I can start testing.
+        signature batch updates. This feature is not yet fully functional.
+
+ * ADD: As a quick fix to the JavaScript toolbar theme compatibility issues
+        I've provided an option to select from a list of DOM elements for
+        where the object should be placed.
+
+ * FIX: Resolved some logic issues in the Notifier module.
 
 0.0.9
  * FIX: Previewing posts and pages was causing multiple stream reading
-failures, which would bloat the httpd log to extreme proportions. Now 
-resolved! This one was a show-stopper.
+        failures, which would bloat the httpd log to extreme proportions.
+        Now resolved! This one was a show-stopper.

@@ -225,8 +225,17 @@ WebTripwire.react = function(expected, actual, message) {
   // Create a div for a message to the user
   var messagebar = document.createElement('div');
   messagebar.id = "webtripwirebar";
-  document.body.insertBefore(messagebar, document.body.firstChild);
-  //document.body.insertBefore(messagebar, document.getElementById("content"));
+
+<?php
+	switch( get_option 'trip_javascript_element' ) ) {
+		case '1':
+			?>document.body.insertBefore(messagebar, document.getElementById("content"));<?php
+			break;
+		default:
+			?>document.body.insertBefore(messagebar, document.body.firstChild);<?php
+			break;
+	}
+?>	
   
   // Display a message to the user
   var infobar = new informationbar();

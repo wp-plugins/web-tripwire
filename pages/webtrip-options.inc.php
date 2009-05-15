@@ -120,6 +120,13 @@
 			</select>
 			<label for="trip_items_per_page">Number of items to display per page in administration interface</label><br />
 
+
+			<select name="trip_javascript_element" id="trip_javascript_element">
+				<option value="0"<?php if (get_option('trip_javascript_element') == "0") { echo " selected=\"selected\""; } ?> >document.body.firstChild</option>
+				<option value="1"<?php if (get_option('trip_javascript_element') == "1") { echo " selected=\"selected\""; } ?> >document.getElementById("content")</option>
+			</select>
+			<label for="trip_javascript_element">Where to insert the JavaScript notification bar. This may require changing, depending on your theme</label><br />
+
 			</fieldset></td>
 		</tr>		
 	</table>
