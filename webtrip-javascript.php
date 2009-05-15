@@ -227,13 +227,15 @@ WebTripwire.react = function(expected, actual, message) {
   messagebar.id = "webtripwirebar";
 
 <?php
-	switch( get_option 'trip_javascript_element' ) ) {
+
+	switch( get_option( 'trip_javascript_element' ) ) {
 		case '1':
 			echo "document.body.insertBefore(messagebar, document.getElementById(\"content\"));";
 			break;
 		default:
 			echo "document.body.insertBefore(messagebar, document.body.firstChild);";
 	}
+
 ?>	
   
   // Display a message to the user
