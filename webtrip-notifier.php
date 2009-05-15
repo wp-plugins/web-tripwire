@@ -67,7 +67,6 @@ switch( get_option( 'trip_logging' ) ) {
 		if ( !$signature_hit ) {
 			log_modification( $_REQUEST['target'], $_REQUEST['actualHTML'] );
 		}
-		break;
 }
 
 /**
@@ -92,7 +91,6 @@ switch( get_option( 'trip_notify' ) ) {
 			continue;
 		else
 			abort_notification();
-		break;
 }
 
 echo <<<END

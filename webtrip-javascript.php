@@ -229,11 +229,10 @@ WebTripwire.react = function(expected, actual, message) {
 <?php
 	switch( get_option 'trip_javascript_element' ) ) {
 		case '1':
-			?>document.body.insertBefore(messagebar, document.getElementById("content"));<?php
+			echo "document.body.insertBefore(messagebar, document.getElementById(\"content\"));";
 			break;
 		default:
-			?>document.body.insertBefore(messagebar, document.body.firstChild);<?php
-			break;
+			echo "document.body.insertBefore(messagebar, document.body.firstChild);";
 	}
 ?>	
   
