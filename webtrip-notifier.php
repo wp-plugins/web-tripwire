@@ -37,21 +37,21 @@ $will_notify = 0;
 $signature_table_name = $wpdb->prefix . "wtsignatures";
 $results = $wpdb->get_results( "SELECT * FROM $signature_table_name", ARRAY_A );
 
-$i = 0;
+$likely_causes = array();
+
 foreach ( $results as $row ) {
 	if ( ( preg_match( "/" . $row['regex'] . "/", $_REQUEST['actualHTML'] ) ) ) {
 		
 		// Copy the signature data to a seperate array for the report.
-		$likely_cause[$i]['detect'] = $row['detect'];
-		$likely_cause[$i]['message'] = $row['message'];
+		array_push( $likely_causes, $row );
+		//$likely_cause[$i]['detect'] = $row['detect'];
+		//$likely_cause[$i]['message'] = $row['message'];
 	   
 	   // Determine if notification precedence.
 		$will_notify = $will_notify || $row['notify'];
 		
 		// Flag that we detected something we have a signature for.
 		$signature_hit = 1;
-		
-		$i ++;
 	}
 }
 
@@ -112,10 +112,8 @@ END;
 
 if ( $signature_hit ) {
 	echo "<ul>\n";
-	$i = 0;
-	while( $i < count( $likely_cause )) {	
-		echo "<li>Detected \"" . $likely_cause[$i]['detect'] . "\", " . $likely_cause[$i]['message'] . "</li>\n";
-		$i ++;
+	foreeach( $likely_causes as $likely_cause ) {	
+		echo "<li>Detected \"" . $likely_cause['detect'] . "\", " . $likely_cause['message'] . "</li>\n";
 	}
 	echo "</ul>\n";
 } else {
