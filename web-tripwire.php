@@ -114,6 +114,22 @@ function webtrip_install () {
        		    "surpresses this error message, as it\'s normal behaviour for the weblog.')";
 
   		$results = $wpdb->query( $insert );
+  		
+  		$insert = "INSERT INTO " . $signature_table_name . " (detect, regex, notify, message) " .
+  		          "VALUES ('Privoxy #1', 'PrivoxyWindowOpen\(.*\)', '1', '" .
+       		    "Privoxy is a non-caching web proxy with advanced filtering capabilities for " .
+       		    "enhancing privacy, modifying web page data and HTTP headers, controlling " .
+       		    "access, and removing ads and other obnoxious Internet junk.')";
+
+  		$results = $wpdb->query( $insert );
+  		
+  		$insert = "INSERT INTO " . $signature_table_name . " (detect, regex, notify, message) " .
+  		          "VALUES ('WordPress Admin Logged In #1', 'nav-admin', '0', '" .
+       		    "The client is logged in as a WordPress administrator, or has rights to view " .
+       		    "the <em>site admin</em> link. This signature typically surpresses this error " .
+       		    "message, as it's normal behaviour for the weblog.')";
+
+  		$results = $wpdb->query( $insert );
 	}
 
 /**

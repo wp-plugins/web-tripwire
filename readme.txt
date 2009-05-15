@@ -4,7 +4,7 @@ Donate link: http://blog.yibble.org/webtripwire/
 Tags: tripwire, security, inject, advertisments
 Requires at least: 2.7.1
 Tested up to: 2.7.1
-Stable tag: 0.0.9
+Stable tag: 0.1.0
 
 Detects in-flight modifications to the HTML, then notifies users, and weblog administrators.
 
@@ -36,3 +36,12 @@ You can visit the [Web Tripwire Plugin](http://blog.yibble.org/webtripwire/) hom
 = Where can I get support, make suggestions, ETC.? =
 
 You can visit the [Support Forums](http://forums.yibble.org/viewforum.php?f=1).
+
+== Screenshots ==
+
+1. This is a screenshot of the Overview sub-menu.
+2. The development Change Log, which is retrieved from the Subversion repository.
+3. The Options sub-menu.
+4. The Log sub-menu, which shows events of tripwires previously triggered.
+5. The Signatures sub-menu, where tripwire signatures can be added.
+6. A handy link to the Support Forums.
