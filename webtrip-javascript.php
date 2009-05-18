@@ -243,7 +243,7 @@ WebTripwire.react = function(expected, actual, message) {
   infobar.setContent('<?php echo __( 'We have detected that this page has been modified in flight. ' .
   	'For more information, click %s ', '<a onclick=\"javascript:w=window.open();w.document.write' .
   	'(WebTripwire.diff);w.document.close()\">', 'web-tripwire' ) . '<u>' . __( 'here', 'web-tripwire' ) .
-  	'</u></a>.' ); ?>
+  	'</u></a>.'; ?>
   //infobar.setfrequency('session');  // make the bar appear once per session
   infobar.initialize();
 
