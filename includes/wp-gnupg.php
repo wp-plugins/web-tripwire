@@ -25,7 +25,7 @@
 $CONFIG['gnupg_home'] = '/var/www/.gnupg';
 
 $gpg = new gnupg()
-	or die( "Unable to initialise GnuPG." );
+	or die( __( 'Unable to initialise GnuPG.', 'web-tripwire' ) );
 
 putenv("GNUPGHOME={$CONFIG['gnupg_home']}");
 
@@ -38,7 +38,7 @@ $gpg -> seterrormode(gnupg::ERROR_WARNING);
     
 function get_signature_update () {
 	$content = file_get_contents( 'http://svn.wp-plugins.org/web-tripwire/trunk/crypto/central-signatures.txt.asc' )
-		or die( "Unable to obtain signature updates from central repository." );
+		or die( __( 'Unable to obtain signature updates from central repository.', 'web-tripwire' ) );
 
 	return $content;
 }
@@ -119,9 +119,9 @@ function verify_gpg_detached ( $localpath, $localfile ) {
 		
 	global $gpg;
 	$plaintext = file_get_contents (	$localpath . '/' . $localfile )
-		or die( "Unable to read local file $localpath/$localfile." );
+		or die( __( 'Unable to read local file %s/%s.', $localpath, $localfile, 'web-tripwire' ) );
 	$signature = file_get_contents ( 'http://svn.wp-plugins.org/web-tripwire/trunk/crypto/' . $localfile . '.asc' )
-		or die( "Unable to read signature $localfile.asc from central repository." );	
+		or die( __( 'Unable to read signature %s.asc from central repository.', $localfile, 'web-tripwire' );	
 	
 	$info = $gpg->verify( $plaintext, $signature );
 	var_dump ($info);

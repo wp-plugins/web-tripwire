@@ -93,13 +93,11 @@ switch( get_option( 'trip_notify' ) ) {
 			abort_notification();
 }
 
-echo <<<END
-<h1>Page Modification Detected</h1>
-<p>We have detected that our web page was modified between leaving our server and arriving in your browser. There are 
-many possible causes for such a modification, ranging from the use of personal firewalls to Internet Service Providers 
-that inject advertisements.</p>
-<p>
-END;
+echo '<h1>' . __( 'Page Modification Detected', 'web-tripwire' ) . '</h1>';
+echo '<p>' . __( 'We have detected that our web page was modified between leaving our server and ' .
+	'arriving in your browser. There are many possible causes for such a modification, ranging from ' .
+	'the use of personal firewalls to Internet Service Providers that inject advertisements.',
+	'web-tripwire' ) . '</p><p>';
 
 /**
  * Work through the likely causes, and output them.
@@ -115,8 +113,6 @@ if ( $signature_hit ) {
 	echo "<p>We were unable to determine what altered the web page.</p>";
 }	
 
-echo <<<END
-</p>
-<p>For your reference, the actual HTML your browser received is shown below, with the modifications highlighted.</p>
-END;
+echo '</p><p>' . __( 'For your reference, the actual HTML your browser received is shown below, ' .
+	'with the modifications highlighted.', 'web-tripwire' ) . '</p>';
 ?>

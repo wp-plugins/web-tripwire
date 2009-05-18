@@ -20,7 +20,7 @@
 ?>
 
 <div class="wrap">
-<h2>Web Tripwire Plugin Log</h2>
+<h2><?php _e( 'Web Tripwire Plugin Log', 'web-tripwire' ); ?></h2>
 
 <?php
 
@@ -41,9 +41,9 @@ if (count($results)) {
         ?>
         
         <div class="alignleft">
-	         <button type="submit" name="op" value="refresh" class="button-secondary refresh">Refresh</button>
-        		<button type="submit" name="op" value="delete" class="button-secondary delete">Delete</button>
-        		<button type="submit" name="op" value="clear" class="button-primary delete">Clear All</button>
+	         <button type="submit" name="op" value="refresh" class="button-secondary refresh"><?php _e( 'Refresh', 'web-tripwire' ); ?></button>
+        		<button type="submit" name="op" value="delete" class="button-secondary delete"><?php _e( 'Delete', 'web-tripwire' ); ?></button>
+        		<button type="submit" name="op" value="clear" class="button-primary delete"><?php _e( 'Clear All', 'web-tripwire' ); ?></button>
 		  </div>
         <br class="clear" />
     </div>
@@ -53,11 +53,11 @@ if (count($results)) {
         <thead>
             <tr>
                 <th scope="col" class="check-column"><input type="checkbox" /></th>
-                <th scope="col" class="num" >id</th>
-                <th scope="col" >Time</th>
-                <th scope="col" >URL</th>
-                <th scope="col" >Agent String</th>
-                <th scope="col" >Summary Difference</th>
+                <th scope="col" class="num" ><?php _e( 'id', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'Time', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'URL', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'Agent String', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'Summary Difference', 'web-tripwire' ); ?></th>
                 <th scope="col" ></th>
             </tr>
         </thead>
@@ -105,9 +105,9 @@ if (count($results)) {
    					?> </td> <?php
                         if ($result->full_diff) {
                         ?> <td class="text">
-									<img src="<?php echo plugins_url( 'web-tripwire/images/fulldiff_icon16.png' ) ?>" alt="Full Difference" /><?php                         
+									<img src="<?php echo plugins_url( WP_WEBTRIP_RDIR . '/images/fulldiff_icon16.png' ) ?>" alt="<?php _e( 'Full Difference', 'web-tripwire' ); ?>" /><?php                         
 									if ( $result->server_html && $result->client_html ) {
-									?><br><img src="<?php echo plugins_url( 'web-tripwire/images/fullhtml_icon16.png' ) ?>" alt="Server and Client HTML" /><?php
+									?><br><img src="<?php echo plugins_url( WP_WEBTRIP_RDIR . '/images/fullhtml_icon16.png' ) ?>" alt="<?php _e( 'Server and Client HTML, 'web-tripwire' ); ?>" /><?php
 									}                         
                         }
                         else {
@@ -124,12 +124,12 @@ if (count($results)) {
             echo "<div class='tablenav-pages'>$page_links</div>";
         ?>
         <div class="alignleft">
-	         <button type="submit" name="op" value="refresh" class="button-secondary refresh">Refresh</button>
-        		<button type="submit" name="op" value="delete" class="button-secondary delete">Delete</button>
+	         <button type="submit" name="op" value="refresh" class="button-secondary refresh"><?php _e( 'Refresh', 'web-tripwire' ); ?></button>
+        		<button type="submit" name="op" value="delete" class="button-secondary delete"><?php _e( 'Delete', 'web-tripwire' ); ?></button>
 		  </div>
         <br class="clear" />
     </div>
     </form>
 <?php } else { ?>
-<p>There are no entries in the log.</p>
+<p><?php _e( 'There are no entries in the log.', 'web-tripwire' ); ?></p>
 <?php } ?>

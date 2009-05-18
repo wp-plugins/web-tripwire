@@ -20,6 +20,6 @@
 ?>
 
 <div class="wrap">
-<h2>Web Tripwire Plugin Signature Update</h2>
-<p>Signature update stuff to go here.</p>
+<h2><?php _e( 'Web Tripwire Plugin Signature Update', 'web-tripwire' ); ?></h2>
+<p><?php _e( 'Signature update stuff to goes here.', 'web-tripwire' ); ?></p>
 </div>

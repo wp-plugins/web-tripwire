@@ -146,7 +146,7 @@ WebTripwire.targetPageURL = "<?php echo $referrer_url; ?>";
 WebTripwire.encodedTargetPageHTML = "<?php echo $html_data_encoded; ?>";
 
 // URL of the page to notify, in the event of a detected change:
-WebTripwire.notifyChangeURL = "<?php echo plugins_url( "/web-tripwire/webtrip-notifier.php" ); ?>"
+WebTripwire.notifyChangeURL = "<?php echo plugins_url( WP_WEBTRIP_RDIR . "/webtrip-notifier.php" ); ?>"
 
 /* Fetches the target page with an XmlHttpRequest and compares it to the
  * expected HTML string.  If they differ, report the modified HTML to
@@ -230,17 +230,20 @@ WebTripwire.react = function(expected, actual, message) {
 
 	switch( get_option( 'trip_javascript_element' ) ) {
 		case '1':
-			echo "document.body.insertBefore(messagebar, document.getElementById(\"content\"));";
+			echo "	document.body.insertBefore(messagebar, document.getElementById(\"content\"));";
 			break;
 		default:
-			echo "document.body.insertBefore(messagebar, document.body.firstChild);";
+			echo "	document.body.insertBefore(messagebar, document.body.firstChild);";
 	}
 
 ?>	
   
   // Display a message to the user
   var infobar = new informationbar();
-  infobar.setContent('We have detected that this page has been modified in flight.  For more information, click <a onclick="javascript:w=window.open();w.document.write(WebTripwire.diff);w.document.close()"><u>here</u></a>.')
+  infobar.setContent('<?php echo __( 'We have detected that this page has been modified in flight. ' .
+  	'For more information, click %s ', '<a onclick=\"javascript:w=window.open();w.document.write' .
+  	'(WebTripwire.diff);w.document.close()\">', 'web-tripwire' ) . '<u>' . __( 'here', 'web-tripwire' ) .
+  	'</u></a>.' ); ?>
   //infobar.setfrequency('session');  // make the bar appear once per session
   infobar.initialize();
 
@@ -273,7 +276,7 @@ WebTripwire.newXHR = function() {
 /* Add stylesheet for tripwire bar. */
 WebTripwire.css = document.createElement('link');
 WebTripwire.css.rel = "StyleSheet";
-WebTripwire.css.href = "<?php echo plugins_url( "/web-tripwire/css/webtrip.css" ); ?>"
+WebTripwire.css.href = "<?php echo plugins_url( WP_WEBTRIP_RDIR . "/css/webtrip.css" ); ?>"
 WebTripwire.css.type = "text/css";
 document.getElementsByTagName("head")[0].appendChild(WebTripwire.css);
 
@@ -418,7 +421,7 @@ function jsd_diff( o, n ) {
 
 function informationbar(){
         this.displayfreq="always"
-        this.content='<a href="javascript:informationbar.close()"><img src="<?php echo plugins_url( "/web-tripwire/images/webtrip-close.gif" ); ?>" style="width: 14px; height: 14px; float: right; border: 0; margin-right: 5px" /></a>'
+        this.content='<a href="javascript:informationbar.close()"><img src="<?php echo plugins_url( WP_WEBTRIP_RDIR . "/images/webtrip-close.gif" ); ?>" style="width: 14px; height: 14px; float: right; border: 0; margin-right: 5px" /></a>'
 }
 
 informationbar.prototype.setContent=function(data){

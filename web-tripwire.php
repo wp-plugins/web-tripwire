@@ -3,9 +3,10 @@
 Plugin Name: Web Tripwire
 Plugin URI: http://blog.yibble.org/webtripwire/
 Description: Detect in-flight alterations made to the served pages between server and client. Allowing you to inform your users if their World-Wide-Web traffic is being modified by ISPs, ETC.
-Version: 0.1.0
+Version: 0.1.1
 Author: Nathan L. Reynolds
 Author URI: http://blog.yibble.org/
+Text Domain: web-tripwire
 */
 
 /** 
@@ -91,43 +92,44 @@ function webtrip_install () {
   		$results = $wpdb->query( $insert );
  
    	$insert = "INSERT INTO " . $signature_table_name . " (detect, regex, notify, message) " .
-   	          "VALUES ('Ad Muncher', 'Begin Ad Muncher', '1', 'Ad Muncher, a " .
-   	          "program designed to block ads.  You can test this by disabling " .
-   	          "Ad Muncher and revisiting the page, to see if this message goes " .
+   	          "VALUES ('Ad Muncher', 'Begin Ad Muncher', '1', '" .
+   	          __( "Ad Muncher, a program designed to block ads.  You can test this by " .
+   	          "disabling Ad Muncher and revisiting the page, to see if this message goes " .
    	 			 "away. If so, Ad Muncher is the cause, and you can safely re-enable " .
-   	 			 "it.')";
+   	 			 "it.')", 'web-tripwire' );
 
   		$results = $wpdb->query( $insert );
 
  		$insert = "INSERT INTO " . $signature_table_name . " (detect, regex, notify, message) " .
-  		          "VALUES ('Ad Muncher', 'Begin Ad Muncher.* Original URL', '1', '<b>" .
-       		    "Warning:</b> This version of Ad Muncher is vulnerable to cross-site " .
+  		          "VALUES ('Ad Muncher', 'Begin Ad Muncher.* Original URL', '1', '" .
+  		          __( "<b>Warning:</b> This version of Ad Muncher is vulnerable to cross-site " .
             	 "scripting attacks.  Be sure to upgrade to Ad Muncher v4.71 or newer " .
-					 "as soon as possible.')";
+					 "as soon as possible.')", 'web-tripwire' );
 
   		$results = $wpdb->query( $insert );
   		
  		$insert = "INSERT INTO " . $signature_table_name . " (detect, regex, notify, message) " .
   		          "VALUES ('WordPress User Logged In #1', 'post-edit-link', '0', '" .
-       		    "The client is logged in as a WordPress user, or has rights to edit " .
+       		    __( "The client is logged in as a WordPress user, or has rights to edit " .
        		    "the post, or view the <em>edit post</em> link. This signature typically " .
-       		    "surpresses this error message, as it\'s normal behaviour for the weblog.')";
+       		    "surpresses this error message, as it\'s normal behaviour for the weblog.')",
+       		    'web-tripwire' );
 
   		$results = $wpdb->query( $insert );
   		
   		$insert = "INSERT INTO " . $signature_table_name . " (detect, regex, notify, message) " .
   		          "VALUES ('Privoxy #1', 'PrivoxyWindowOpen\(.*\)', '1', '" .
-       		    "Privoxy is a non-caching web proxy with advanced filtering capabilities for " .
-       		    "enhancing privacy, modifying web page data and HTTP headers, controlling " .
-       		    "access, and removing ads and other obnoxious Internet junk.')";
+       		    __( "Privoxy is a non-caching web proxy with advanced filtering capabilities " .
+       		    "for enhancing privacy, modifying web page data and HTTP headers, controlling " .
+       		    "access, and removing ads and other obnoxious Internet junk.')", 'web-tripwire' );
 
   		$results = $wpdb->query( $insert );
   		
   		$insert = "INSERT INTO " . $signature_table_name . " (detect, regex, notify, message) " .
   		          "VALUES ('WordPress Admin Logged In #1', 'nav-admin', '0', '" .
-       		    "The client is logged in as a WordPress administrator, or has rights to view " .
-       		    "the <em>site admin</em> link. This signature typically surpresses this error " .
-       		    "message, as it's normal behaviour for the weblog.')";
+       		    __( "The client is logged in as a WordPress administrator, or has rights to " .
+       		    "view the <em>site admin</em> link. This signature typically surpresses this " .
+       		    "error message, as it's normal behaviour for the weblog.')", 'web-tripwire' );
 
   		$results = $wpdb->query( $insert );
 	}
@@ -208,20 +210,27 @@ function web_tripwire_menu() {
 		$wpdb->prefix."wtunknown` WHERE has_viewed = 0");
 	$events = $results[0]->count;
 
-	add_menu_page( 'Web Tripwire Plugin Overview', 'Web Tripwire', 8, __FILE__, 'web_tripwire_overview',
+	add_menu_page( __( 'Web Tripwire Plugin Overview', 'web-tripwire' ),
+		__( 'Web Tripwire', 'web-tripwire' ), 8, __FILE__, 'web_tripwire_overview',
 		plugins_url( 'web-tripwire/images/icon16.png' ) );
-	add_submenu_page( __FILE__, 'Web Tripwire Plugin Overview', 'Overview', 8, __FILE__,
-		'web_tripwire_overview' );
-   add_submenu_page( __FILE__, 'Web Tripwire Plugin Change Log', 'Change Log', 8, 'changes',
-   	'web_tripwire_changes' );
-   add_submenu_page( __FILE__, 'Web Tripwire Plugin Options', 'Options', 8, 'options',
-   	'web_tripwire_options' );
-   add_submenu_page( __FILE__, 'Web Tripwire Plugin Log', 'Log (' . $events . ')', 8, 'log',
-   	'web_tripwire_log' );
-   add_submenu_page( __FILE__, 'Web Tripwire Plugin Signatures', 'Signatures', 8, 'signatures',
-   	'web_tripwire_signatures' );
-   add_submenu_page( __FILE__, 'Web Tripwire Plugin Support Forums', 'Support Forums', 8, 'forums',
-   	'web_tripwire_forums' );
+		
+	add_submenu_page( __FILE__, __( 'Web Tripwire Plugin Overview', 'web-tripwire' ),
+		__( 'Overview', 'web-tripwire' ), 8, __FILE__, 'web_tripwire_overview' );
+		
+   add_submenu_page( __FILE__, __( 'Web Tripwire Plugin Change Log', 'web-tripwire' ),
+   	__( 'Change Log', 'web-tripwire' ), 8, 'changes', 'web_tripwire_changes' );
+   	
+   add_submenu_page( __FILE__, __( 'Web Tripwire Plugin Options', 'web-tripwire' ),
+   	__( 'Options', 'web-tripwire' ), 8, 'options', 'web_tripwire_options' );
+   	
+   add_submenu_page( __FILE__, __( 'Web Tripwire Plugin Log', 'web-tripwire' ),
+   	__( 'Log (%d)', $events, 'web-tripwire' ), 8, 'log', 'web_tripwire_log' );
+   	
+   add_submenu_page( __FILE__, __( 'Web Tripwire Plugin Signatures', 'web-tripwire' ),
+   	__( 'Signatures', 'web-tripwire' ), 8, 'signatures', 'web_tripwire_signatures' );
+   	
+   add_submenu_page( __FILE__, __( 'Web Tripwire Plugin Support Forums', 'web-tripwire' ),
+   	__( 'Support Forums', 'web-tripwire' ), 8, 'forums', 'web_tripwire_forums' );
 }
 
 function web_tripwire_overview() {
@@ -229,15 +238,15 @@ function web_tripwire_overview() {
 		case 'verify':
 			if( class_exists( 'gnupg' ) && get_option( 'trip_gpg' ) ) {
 				if ( verify_gpg_detached( WP_PLUGIN_DIR . '/web-tripwire', 'webtrip-notifier.php' ) ) {
-					$message = "Installation verified successfully!";
+					$message = __( 'Verification of installation was successful.', 'web-tripwire' );
 					break;
 				} else {
-					$message = "Installation failed!";
+					$message = __( 'Verification of installation failed!', 'web-tripwire' );
 					break;
 				}
 				?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			} else {
-				$message = 'PECL GnuPG Module is not available to PHP.';
+				$message = __( 'PECL GnuPG Module is not available to PHP.', 'web-tripwire' );
 				?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			}
 			break;
@@ -268,7 +277,7 @@ function web_tripwire_options() {
 		update_option( 'trip_gpg', $_POST[ 'trip_gpg' ] );
 		update_option( 'trip_javascript_element', $_POST[ 'trip_javascript_element' ] );
 
-?> <div class="updated"><p><strong>Options saved.</strong></p></div> <?php
+?> <div class="updated"><p><strong><?php _e( 'Options saved.', 'web-tripwire' ); ?></strong></p></div> <?php
 
    }
 	include(dirname(__FILE__) . '/pages/webtrip-options.inc.php');    // Now display the options editing screen
@@ -298,12 +307,14 @@ function web_tripwire_log() {
 				$result =& $wpdb->get_results($wpdb->prepare("SELECT * FROM `".$wpdb->prefix."wtunknown` " . 
 					"WHERE `id` = %d", $id));
 				if (!$result) {
-					$message = 'The selected entries were not found.';
+					$message = __ngettext( 'The selected entry was not found.', 'The selected entries were ' .
+						'not found.', $result, 'web-tripwire' );
 				} else {
 					$result =& $result[0];
 					$wpdb->query($wpdb->prepare("DELETE FROM `".$wpdb->prefix."wtunknown` WHERE `id` = %d", $id));
 				}
-				$message = 'The selected entries were deleted.';
+				$message = __ngettext( 'The selected entry was deleted.', 'The selected entries were ' .
+						'deleted.', $result, 'web-tripwire' );
 			}
 			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			break;			
@@ -340,12 +351,14 @@ function web_tripwire_signatures() {
 			foreach ($ids as $id) {
 				$result =& $wpdb->get_results($wpdb->prepare("SELECT * FROM `".$wpdb->prefix."wtsignatures` WHERE `id` = %d", $id));
 				if (!$result) {
-					$errors[] = 'The selected signatures were not found.';
+					$errors[] = __ngettext( 'The selected signature was not found.', 'The selected signatures were ' .
+						'not found.', $result, 'web-tripwire' );
 				} else {
 					$result =& $result[0];
 					$wpdb->query($wpdb->prepare("DELETE FROM `".$wpdb->prefix."wtsignatures` WHERE `id` = %d", $id));
 				}
-					$message = 'The selected signatures were deleted.';
+					$message = __ngettext( 'The selected signature was deleted.', 'The selected signatures were ' .
+						'deleted.', $result, 'web-tripwire' );
 			}
 			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			break;
@@ -354,9 +367,9 @@ function web_tripwire_signatures() {
 				$wpdb->query($wpdb->prepare("INSERT INTO `".$wpdb->prefix."wtsignatures` (detect, regex, notify, message) " .
 					"VALUES ('" . addslashes( $_REQUEST['detect'] ) . "', '" . addslashes( $_REQUEST['regex'] ) . "', '" .
 					addslashes( $_REQUEST['notify'] ) . "', '" . addslashes( $_REQUEST['message'] ) . "')"));
-				$message = 'The signature was added.';
+				$message = __( 'The signature was added.', 'web-tripwire' );
 			} else {
-				$message = 'All fields must be completed.';
+				$message = __( 'All fields must be completed.', 'web-tripwire' );
 			}
 			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			break;
@@ -365,12 +378,13 @@ function web_tripwire_signatures() {
 				//$info = verify_gpg_signature ( get_gpg_plaintext (), get_gpg_signature () );
 				$info = verify_gpg_clearsign ( get_signature_update () );
 				if ( $info[0]['fingerprint'] !== 'A20087E339CE514446E6AFEEC716E6331C1DC95C' ) {
-					$message = 'Failed to verify signature!';
+					$message = __( 'Failed to verify signature!', 'web-tripwire' );
 				} else {
-					$message = 'Successful verification of signature. Fingerprint = ' . $info[0]['fingerprint'];
+					$message = __( 'Successful verification of signature. Fingerprint = %s',
+						$info[0]['fingerprint'], 'web-tripwire' );
 				}
 			} else {
-				$message = 'PECL GnuPG Module is not available to PHP.';
+				$message = __( 'PECL GnuPG Module is not available to PHP.', 'web-tripwire' );
 			}
 			?><div class="updated"><p><strong><?php echo $message; ?></strong></p></div><?php
 			break;			
@@ -407,8 +421,9 @@ echo <<<END
 \n\n<!-- web-tripwire begin -->\n
 END;
 
-	echo "<script type=\"text/javascript\" src=\"" . WP_PLUGIN_URL . "/web-tripwire/webtrip-javascript.php?target=" .
-		rawurlencode(get_bloginfo('url').$_SERVER['REQUEST_URI'])."\"></script>";
+	echo "<script type=\"text/javascript\" src=\"" . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
+		"/webtrip-javascript.php?target=" . rawurlencode( get_bloginfo( 'url' ) .$ _SERVER['REQUEST_URI'] ) .
+		"\"></script>";
 
 echo <<<END
 \n<!-- web-tripwire end -->\n\n

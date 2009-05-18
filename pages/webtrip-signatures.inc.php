@@ -20,7 +20,7 @@
 ?>
 
 <div class="wrap">
-<h2>Web Tripwire Plugin Signatures</h2>
+<h2><?php _e( 'Web Tripwire Plugin Signatures', 'web-tripwire' ); ?></h2>
 
 <?php
 
@@ -40,10 +40,10 @@ if (count($results)) {
         ?>
         
         <div class="alignleft">
-	         <button type="submit" name="op" value="refresh" class="button-secondary refresh">Refresh</button>
-	         <button type="submit" name="op" value="delete" class="button-secondary delete">Delete</button>
+	         <button type="submit" name="op" value="refresh" class="button-secondary refresh"><?php _e( 'Refresh', 'web-tripwire' ); ?></button>
+	         <button type="submit" name="op" value="delete" class="button-secondary delete"><?php _e( 'Delete', 'web-tripwire' ); ?></button>
 		  <?php if( class_exists( 'gnupg' ) && get_option( 'trip_gpg' ) ) { ?>
-	         <button type="submit" name="op" value="update" class="button-primary update">Update Signatures</button>
+	         <button type="submit" name="op" value="update" class="button-primary update"><?php _e( 'Update Signatures', 'web-tripwire' ); ?></button>
 	     <?php } ?>
 		  </div>
         <br class="clear" />
@@ -54,11 +54,11 @@ if (count($results)) {
         <thead>
             <tr>
                 <th scope="col" class="check-column"><input type="checkbox" /></th>
-                <th scope="col" class="num" >id</th>
-                <th scope="col" >Detect</th>
-                <th scope="col" >Regex</th>
-                <th scope="col" >Notify</th>
-                <th scope="col" >Message</th>
+                <th scope="col" class="num" ><?php _e( 'id', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'Detect', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'Regex', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'Notify', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'Message', 'web-tripwire' ); ?></th>
             </tr>
         </thead>
         <tbody>
@@ -110,26 +110,26 @@ if (count($results)) {
             echo "<div class='tablenav-pages'>$page_links</div>";
         ?>
         <div class="alignleft">
-	         <button type="submit" name="op" value="refresh" class="button-secondary refresh">Refresh</button>
-	         <button type="submit" name="op" value="delete" class="button-secondary delete">Delete</button>
+	         <button type="submit" name="op" value="refresh" class="button-secondary refresh"><?php _e( 'Refresh', 'web-tripwire' ); ?></button>
+	         <button type="submit" name="op" value="delete" class="button-secondary delete"><?php _e( 'Delete', 'web-tripwire' ); ?></button>
 
     </div>
     <br class="clear" />
     </form>
 <?php } else { ?>
-<p>There are no entries in the signatures.</p>
+<p><?php _e( 'There are no entries in the signatures.', 'web-tripwire' ); ?></p>
 <?php } ?>
 </ br>
 
-<h2>Add a Signature</h2>
+<h2><?php _e( 'Add a Signature', 'web-tripwire' ); ?></h2>
 	<form method="post" action="">
     <table class="widefat">
         <thead>
             <tr>
-                <th scope="col" >Detect</th>
-                <th scope="col" >Regex</th>
-                <th scope="col" >Notify</th>
-                <th scope="col" >Message</th>
+                <th scope="col" ><?php _e( 'Detect', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'Regex', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'Notify', 'web-tripwire' ); ?></th>
+                <th scope="col" ><?php _e( 'Message', 'web-tripwire' ); ?></th>
             </tr>
         </thead>
         <tbody>
@@ -154,7 +154,7 @@ if (count($results)) {
     </table>
     <div class="tablenav">
         <div class="alignleft">
-	         <button type="submit" name="op" value="add" class="button-secondary add">Add</button>
+	         <button type="submit" name="op" value="add" class="button-secondary add"><?php _e( 'Add', 'web-tripwire' ); ?></button>
 	     </div>
         <br class="clear" />
     </div>

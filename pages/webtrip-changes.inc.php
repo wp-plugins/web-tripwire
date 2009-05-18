@@ -20,8 +20,9 @@
 ?>
 
 <div class="wrap">
-<h2>Web Tripwire Plugin Change Log</h2>
-<p>This is the change log for the current development version of the Web Tripwires plugin.</p>
+<h2><?php _e( 'Web Tripwire Plugin Change Log', 'web-tripwire' ); ?></h2>
+<p><?php _e( 'This is the change log for the current development version of the Web Tripwires plugin.', 
+	'web-tripwire' ); ?></p>
 
 <iframe style="width: 100%; height: 500px;" src="http://svn.wp-plugins.org/web-tripwire/trunk/CHANGES"></iframe> 
 

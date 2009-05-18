@@ -34,19 +34,30 @@ require_once( $root . '/wp-includes/wp-db.php' );
 
 
 
- /**
+/**
  * Definitions get defined below. This are used to get some directory
  * namespace for the WordPress and WP-WebTrip installation.
  */
+$plugin_dir = basename( dirname( dirname( __FILE__ ) ) ) )
 
 if ( ! defined( 'WP_CONTENT_URL' ) )
-      define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
+   define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
 if ( ! defined( 'WP_CONTENT_DIR' ) )
-      define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
+   define( 'WP_CONTENT_DIR', ABSPATH . 'wp-content' );
 if ( ! defined( 'WP_PLUGIN_URL' ) )
-      define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
+   define( 'WP_PLUGIN_URL', WP_CONTENT_URL. '/plugins' );
 if ( ! defined( 'WP_PLUGIN_DIR' ) )
-      define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
+   define( 'WP_PLUGIN_DIR', WP_CONTENT_DIR . '/plugins' );
+if ( ! defined( 'WP_WEBTRIP_ADIR' ) )
+	define( 'WP_WEBTRIP_ADIR', WP_PLUGIN_DIR . '/' . $plugin_dir );
+if ( ! defined( 'WP_WEBTRIP_RDIR' ) )
+	define( 'WP_WEBTRIP_RDIR', '/' . $plugin_dir );
+
+/**
+ * i18n support.
+ */
+load_plugin_textdomain( 'web-tripwire', 'wp-content/plugins/' . $plugin_dir, $plugin_dir );
+
 
 /**
  * Functions are defined here. They are generic WP-WebTrip specific functions.
@@ -266,5 +277,4 @@ function abort_notification() {
 		header( 'HTTP/1.1 204 No Content' );
 		exit( 1 );
 }
-
 ?>
