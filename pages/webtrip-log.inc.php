@@ -107,7 +107,7 @@ if (count($results)) {
                         ?> <td class="text">
 									<img src="<?php echo plugins_url( WP_WEBTRIP_RDIR . '/images/fulldiff_icon16.png' ) ?>" alt="<?php _e( 'Full Difference', 'web-tripwire' ); ?>" /><?php                         
 									if ( $result->server_html && $result->client_html ) {
-									?><br><img src="<?php echo plugins_url( WP_WEBTRIP_RDIR . '/images/fullhtml_icon16.png' ) ?>" alt="<?php _e( 'Server and Client HTML, 'web-tripwire' ); ?>" /><?php
+									?><br><img src="<?php echo plugins_url( WP_WEBTRIP_RDIR . '/images/fullhtml_icon16.png' ) ?>" alt="<?php _e( 'Server and Client HTML', 'web-tripwire' ); ?>" /><?php
 									}                         
                         }
                         else {
