@@ -421,8 +421,8 @@ echo <<<END
 \n\n<!-- web-tripwire begin -->\n
 END;
 
-	echo "<script type=\"text/javascript\" src=\"" . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
-		"/webtrip-javascript.php?target=" . rawurlencode( get_bloginfo( 'url' ) .$ _SERVER['REQUEST_URI'] ) .
+	echo "<script type=\"text/javascript\" src=\"" . WP_PLUGIN_URL . "/" . WP_WEBTRIP_RDIR .
+		"/webtrip-javascript.php?target=" . rawurlencode( get_bloginfo( 'url' ) . $ _SERVER['REQUEST_URI'] ) .
 		"\"></script>";
 
 echo <<<END
