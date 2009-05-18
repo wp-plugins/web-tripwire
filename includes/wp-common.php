@@ -38,7 +38,7 @@ require_once( $root . '/wp-includes/wp-db.php' );
  * Definitions get defined below. This are used to get some directory
  * namespace for the WordPress and WP-WebTrip installation.
  */
-$plugin_dir = basename( dirname( dirname( __FILE__ ) ) ) )
+$plugin_dir = basename( dirname( dirname( __FILE__ ) ) );
 
 if ( ! defined( 'WP_CONTENT_URL' ) )
    define( 'WP_CONTENT_URL', get_option( 'siteurl' ) . '/wp-content' );
