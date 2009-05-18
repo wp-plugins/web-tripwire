@@ -1,0 +1,460 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Nathan L. Reynolds
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/web-tripwire\n"
+"POT-Creation-Date: 2009-05-18 23:10+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: includes/wp-gnupg.php:28
+msgid "Unable to initialise GnuPG."
+msgstr ""
+
+#: includes/wp-gnupg.php:41
+msgid "Unable to obtain signature updates from central repository."
+msgstr ""
+
+#: includes/wp-gnupg.php:122
+#, php-format
+msgid "Unable to read local file %s/%s."
+msgstr ""
+
+#: includes/wp-gnupg.php:124
+#, php-format
+msgid "Unable to read signature %s.asc from central repository."
+msgstr ""
+
+#: pages/webtrip-changes.inc.php:23 web-tripwire.php:220
+msgid "Web Tripwire Plugin Change Log"
+msgstr ""
+
+#: pages/webtrip-changes.inc.php:24
+msgid ""
+"This is the change log for the current development version of the Web "
+"Tripwires plugin."
+msgstr ""
+
+#: pages/webtrip-forums.inc.php:23 web-tripwire.php:234
+msgid "Web Tripwire Plugin Support Forums"
+msgstr ""
+
+#: pages/webtrip-forums.inc.php:24
+msgid ""
+"Please use these forums to pose questions, give comments or assist in "
+"developing the "
+msgstr ""
+
+#: pages/webtrip-log.inc.php:23
+msgid "Web Tripwire Plugin Log"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:44 pages/webtrip-log.inc.php:127
+#: pages/webtrip-signatures.inc.php:43 pages/webtrip-signatures.inc.php:113
+msgid "Refresh"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:45 pages/webtrip-log.inc.php:128
+#: pages/webtrip-signatures.inc.php:44 pages/webtrip-signatures.inc.php:114
+msgid "Delete"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:46
+msgid "Clear All"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:56 pages/webtrip-signatures.inc.php:57
+msgid "id"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:57
+msgid "Time"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:58
+msgid "URL"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:59
+msgid "Agent String"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:60
+msgid "Summary Difference"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:108
+msgid "Full Difference"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:110
+msgid "Server and Client HTML"
+msgstr ""
+
+#: pages/webtrip-log.inc.php:134
+msgid "There are no entries in the log."
+msgstr ""
+
+#: pages/webtrip-options.inc.php:23 web-tripwire.php:223
+msgid "Web Tripwire Plugin Options"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:30 pages/webtrip-options.inc.php:31
+msgid "Client Notifications"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:34
+msgid "Enable notifications of all in-flight modifications"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:37
+msgid ""
+"Enable notifications of urgent, and unclassified in-flight modifications"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:40
+msgid "Enable only notifications of urgent in-flight modifications"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:43
+msgid "Disable all notifications"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:48 pages/webtrip-options.inc.php:49
+msgid "Logging"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:52
+msgid "Enable logging of all in-flight modifications"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:55
+msgid "Enable logging of unknown in-flight modifications"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:58
+msgid "Disable all logging"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:63 pages/webtrip-options.inc.php:64
+msgid "Logging Detail"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:67
+msgid ""
+"Enable recording of server-side page, client-side page, and full difference "
+"output"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:70
+msgid "Enable recording of full difference output"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:73
+msgid "Enable recording of summary difference output"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:79 pages/webtrip-options.inc.php:80
+msgid "Caching Mechanism"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:83
+msgid ""
+"Use database-based caching of requested pages (compatible with all hosting "
+"providers)"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:86
+msgid "Disable all caching of requested pages"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:94
+msgid "Expiry time of cached object (in seconds)"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:100 pages/webtrip-options.inc.php:101
+msgid "GnuPG"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:104
+msgid "Enable GnuPG functionality (EXPERIMENTAL!)"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:107
+msgid "Disable GnuPG functionality"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:113 pages/webtrip-options.inc.php:114
+msgid "Miscellaneous"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:121
+msgid "Number of items to display per page in administration interface"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:128
+msgid ""
+"Where to insert the JavaScript notification bar. This may require changing, "
+"depending on your theme"
+msgstr ""
+
+#: pages/webtrip-options.inc.php:136
+msgid "Update Options"
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:23 web-tripwire.php:213 web-tripwire.php:217
+msgid "Web Tripwire Plugin Overview"
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:24
+msgid ""
+"Welcome to the WordPress Web Tripwire Plugin. This plugin is based upon "
+"public code "
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:29
+msgid "What is a Web Tripwire?"
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:30
+msgid ""
+"A Web Tripwire is a mechanism which compares the web server’s view of a web-"
+"site, with the "
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:37
+msgid "More information regarding this plugin is available from"
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:40
+msgid "System Information"
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:44
+#, php-format
+msgid ""
+"PECL GnuPG Module%s found. GnuPG-based cryptographic functionality is now "
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:53
+msgid "Verify Installation"
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:60
+msgid ""
+"In order access the GnuPG-based cryptographic functionality, you will need "
+"to enable it in "
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:63
+#, php-format
+msgid ""
+"PECL GnuPG Module%s not found. Don't panic! Only some features will be "
+"inaccessible. "
+msgstr ""
+
+#: pages/webtrip-overview.inc.php:67
+msgid ""
+"This functionality is also very experimental. In fact, it's still undergoing "
+"a lot development "
+msgstr ""
+
+#: pages/webtrip-signatures.inc.php:23 web-tripwire.php:231
+msgid "Web Tripwire Plugin Signatures"
+msgstr ""
+
+#: pages/webtrip-signatures.inc.php:46
+msgid "Update Signatures"
+msgstr ""
+
+#: pages/webtrip-signatures.inc.php:58 pages/webtrip-signatures.inc.php:129
+msgid "Detect"
+msgstr ""
+
+#: pages/webtrip-signatures.inc.php:59 pages/webtrip-signatures.inc.php:130
+msgid "Regex"
+msgstr ""
+
+#: pages/webtrip-signatures.inc.php:60 pages/webtrip-signatures.inc.php:131
+msgid "Notify"
+msgstr ""
+
+#: pages/webtrip-signatures.inc.php:61 pages/webtrip-signatures.inc.php:132
+msgid "Message"
+msgstr ""
+
+#: pages/webtrip-signatures.inc.php:120
+msgid "There are no entries in the signatures."
+msgstr ""
+
+#: pages/webtrip-signatures.inc.php:124
+msgid "Add a Signature"
+msgstr ""
+
+#: pages/webtrip-signatures.inc.php:157
+msgid "Add"
+msgstr ""
+
+#: pages/webtrip-update.inc.php:23
+msgid "Web Tripwire Plugin Signature Update"
+msgstr ""
+
+#: pages/webtrip-update.inc.php:24
+msgid "Signature update stuff to goes here."
+msgstr ""
+
+#: web-tripwire.php:96
+msgid "Ad Muncher, a program designed to block ads.  You can test this by "
+msgstr ""
+
+#: web-tripwire.php:105
+msgid "<b>Warning:</b> This version of Ad Muncher is vulnerable to cross-site "
+msgstr ""
+
+#: web-tripwire.php:113
+msgid "The client is logged in as a WordPress user, or has rights to edit "
+msgstr ""
+
+#: web-tripwire.php:122
+msgid ""
+"Privoxy is a non-caching web proxy with advanced filtering capabilities "
+msgstr ""
+
+#: web-tripwire.php:130
+msgid "The client is logged in as a WordPress administrator, or has rights to "
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (PACKAGE VERSION)  #-#-#-#-#
+#. Plugin Name of an extension
+#: web-tripwire.php:214
+msgid "Web Tripwire"
+msgstr ""
+
+#: web-tripwire.php:218
+msgid "Overview"
+msgstr ""
+
+#: web-tripwire.php:221
+msgid "Change Log"
+msgstr ""
+
+#: web-tripwire.php:224
+msgid "Options"
+msgstr ""
+
+#: web-tripwire.php:232
+msgid "Signatures"
+msgstr ""
+
+#: web-tripwire.php:235
+msgid "Support Forums"
+msgstr ""
+
+#: web-tripwire.php:243
+msgid "Verification of installation was successful."
+msgstr ""
+
+#: web-tripwire.php:246
+msgid "Verification of installation failed!"
+msgstr ""
+
+#: web-tripwire.php:251 web-tripwire.php:389
+msgid "PECL GnuPG Module is not available to PHP."
+msgstr ""
+
+#: web-tripwire.php:282
+msgid "Options saved."
+msgstr ""
+
+#: web-tripwire.php:312
+msgid "The selected entry was not found."
+msgid_plural "The selected entries were "
+msgstr[0] ""
+msgstr[1] ""
+
+#: web-tripwire.php:318
+msgid "The selected entry was deleted."
+msgid_plural "The selected entries were "
+msgstr[0] ""
+msgstr[1] ""
+
+#: web-tripwire.php:356
+msgid "The selected signature was not found."
+msgid_plural "The selected signatures were "
+msgstr[0] ""
+msgstr[1] ""
+
+#: web-tripwire.php:362
+msgid "The selected signature was deleted."
+msgid_plural "The selected signatures were "
+msgstr[0] ""
+msgstr[1] ""
+
+#: web-tripwire.php:372
+msgid "The signature was added."
+msgstr ""
+
+#: web-tripwire.php:374
+msgid "All fields must be completed."
+msgstr ""
+
+#: web-tripwire.php:383
+msgid "Failed to verify signature!"
+msgstr ""
+
+#: web-tripwire.php:385
+#, php-format
+msgid "Successful verification of signature. Fingerprint = %s"
+msgstr ""
+
+#: webtrip-javascript.php:243
+msgid "We have detected that this page has been modified in flight. "
+msgstr ""
+
+#: webtrip-javascript.php:245
+msgid "here"
+msgstr ""
+
+#: webtrip-notifier.php:96
+msgid "Page Modification Detected"
+msgstr ""
+
+#: webtrip-notifier.php:97
+msgid ""
+"We have detected that our web page was modified between leaving our server "
+"and "
+msgstr ""
+
+#: webtrip-notifier.php:116
+msgid ""
+"For your reference, the actual HTML your browser received is shown below, "
+msgstr ""
+
+#. Plugin URI of an extension
+msgid "http://blog.yibble.org/webtripwire/"
+msgstr ""
+
+#. Description of an extension
+msgid ""
+"Detect in-flight alterations made to the served pages between server and "
+"client. Allowing you to inform your users if their World-Wide-Web traffic is "
+"being modified by ISPs, ETC."
+msgstr ""
+
+#. Author of an extension
+msgid "Nathan L. Reynolds"
+msgstr ""
+
+#. Author URI of an extension
+msgid "http://blog.yibble.org/"
+msgstr ""
