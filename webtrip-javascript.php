@@ -241,9 +241,9 @@ WebTripwire.react = function(expected, actual, message) {
   // Display a message to the user
   var infobar = new informationbar();
   infobar.setContent('<?php printf( __( 'We have detected that this page has been modified in flight. ' .
-  	'For more information, click %s ', 'web-tripwire' ), '<a onclick=\"javascript:w=window.open();w.document.write' .
-  	'(WebTripwire.diff);w.document.close()\">' ) . '<u>' . __( 'here', 'web-tripwire' ) .
-  	'</u></a>.'; ?>
+  	'For more information, click %s ', 'web-tripwire' ), '<a onclick="javascript:w=window.open();w.document.write' .
+  	'(WebTripwire.diff);w.document.close()">' ) . '<u>' . __( 'here', 'web-tripwire' ) .
+  	'</u></a>.'; ?>');
   //infobar.setfrequency('session');  // make the bar appear once per session
   infobar.initialize();
 
