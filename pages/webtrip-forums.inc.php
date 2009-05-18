@@ -21,9 +21,9 @@
 
 <div class="wrap">
 <h2><?php _e( 'Web Tripwire Plugin Support Forums', 'web-tripwire' ); ?></h2>
-<p><?php __( 'Please use these forums to pose questions, give comments or assist in developing the ' .
-	'Web Tripwire Plugin further. Click this %slink%s to open them in a new window.', '<a href=\"http://' .
-	'forums.yibble.org/viewforum.php?f=1\" target=\"_blank\">', '</a>', 'web-tripwire' ); ?></p>
+<p><?php printf( __( 'Please use these forums to pose questions, give comments or assist in developing the ' .
+	'Web Tripwire Plugin further. Click this %slink%s to open them in a new window.', 'web-tripwire' ),
+	'<a href="http://forums.yibble.org/viewforum.php?f=1" target="_blank">', '</a>' ); ?></p>
 
 <iframe style="width: 100%; height: 500px;" src="http://forums.yibble.org/viewforum.php?f=1"></iframe> 
 
