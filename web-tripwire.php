@@ -224,7 +224,7 @@ function web_tripwire_menu() {
    	__( 'Options', 'web-tripwire' ), 8, 'options', 'web_tripwire_options' );
    	
    add_submenu_page( __FILE__, __( 'Web Tripwire Plugin Log', 'web-tripwire' ),
-   	__( 'Log (%d)', $events, 'web-tripwire' ), 8, 'log', 'web_tripwire_log' );
+   	printf( __( 'Log (%d)', 'web-tripwire' ), $events ), 8, 'log', 'web_tripwire_log' );
    	
    add_submenu_page( __FILE__, __( 'Web Tripwire Plugin Signatures', 'web-tripwire' ),
    	__( 'Signatures', 'web-tripwire' ), 8, 'signatures', 'web_tripwire_signatures' );
