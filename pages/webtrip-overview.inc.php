@@ -58,7 +58,7 @@
 </form>
 <?php	} else { ?>
 <p><?php printf( __( 'In order access the GnuPG-based cryptographic functionality, you will need to enable it in ' .
-	'the %sOptions%s sub-menu.', 'web-tripwire' ), , '<strong>', '</strong>' ); ?></p>
+	'the %sOptions%s sub-menu.', 'web-tripwire' ), '<strong>', '</strong>' ); ?></p>
 <?php } } else { ?>
 <p><strong><?php printf( __( 'PECL GnuPG Module%s not found. Don\'t panic! Only some features will be inaccessible. ' .
 	'You will not be able to cryptographically validate the integrity of your installation against the ' .
