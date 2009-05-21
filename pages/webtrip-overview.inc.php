@@ -73,9 +73,9 @@
 		  height="200" id="graph-2" align="middle">
  
 	<param name="allowScriptAccess" value="sameDomain" />
-	<param name="movie" value="../flash/open-flash-chart.swf?data=<?php echo urlencode( '../json/test.json' ); ?>" />
+	<param name="movie" value="<?php plugins_url( WP_WEBTRIP_ADIR . '/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.json' ); ?>" />
 	<param name="quality" value="high" />
-	<embed src="../flash/open-flash-chart.swf?data=<?php echo urlencode( '../json/test.json' ); ?>"
+	<embed src="<?php plugins_url( WP_WEBTRIP_ADIR . '/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.json' ); ?>"
 		   quality="high"
 		   bgcolor="#FFFFFF"
 		   width="500"
