@@ -67,15 +67,16 @@
 <p><?php printf( __( 'This functionality is also very experimental. In fact, it\'s still undergoing a lot development ' .
 	'to get it to a functional level. So you %sreally%s aren\'t missing out.', 'web-tripwire' ), '<em>', '</em>' ); ?></p>
 <?php } ?>
+
 <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
         codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
         width="550"
 		  height="200" id="graph-2" align="middle">
  
 	<param name="allowScriptAccess" value="sameDomain" />
-	<param name="movie" value="<?php plugins_url( 'web-tripwire/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.php' ); ?>" />
+	<param name="movie" value="<?php echo plugins_url( 'web-tripwire/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.php' ); ?>" />
 	<param name="quality" value="high" />
-	<embed src="<?php plugins_url( 'web-tripwire/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.php' ); ?>"
+	<embed src="<?php echo plugins_url( 'web-tripwire/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.php' ); ?>"
 		   quality="high"
 		   bgcolor="#FFFFFF"
 		   width="500"
