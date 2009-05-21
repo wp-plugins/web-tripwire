@@ -3,7 +3,7 @@
 Plugin Name: Web Tripwire
 Plugin URI: http://blog.yibble.org/webtripwire/
 Description: Detect in-flight alterations made to the served pages between server and client. Allowing you to inform your users if their World-Wide-Web traffic is being modified by ISPs, ETC.
-Version: 0.1.1
+Version: 0.1.2
 Author: Nathan L. Reynolds
 Author URI: http://blog.yibble.org/
 Text Domain: web-tripwire
@@ -43,7 +43,7 @@ else {
  * Variables get defined below:
  */
  
-$webtrip_db_version = "0.1";
+$webtrip_db_version = "0.2";
 
 /**
  * Functions specific to the handling of the WordPress API get declared below:
@@ -76,6 +76,7 @@ function webtrip_install () {
   		`regex` tinytext,
   		`notify` int(11) default NULL,
   		`message` text,
+  		`count` int(11) default '0', 
   		UNIQUE KEY  (`id`)
 		);";
 
@@ -130,6 +131,15 @@ function webtrip_install () {
        		    __( "The client is logged in as a WordPress administrator, or has rights to " .
        		    "view the <em>site admin</em> link. This signature typically surpresses this " .
        		    "error message, as it's normal behaviour for the weblog.')", 'web-tripwire' );
+
+  		$results = $wpdb->query( $insert );
+
+  		$insert = "INSERT INTO " . $signature_table_name . " (detect, regex, notify, message) " .
+  		          "VALUES ('Vodafone Image Quality Reduction', 'http://1.2.3.4/bmi-int-js/bmi.js', '1', '" .
+       		    __( "Typically introduce by a transparent proxy server via the Vodafone mobile " .
+       		    "network. This code is used to replace on-page images with more highly compressed " .
+       		    "alternatives, presumably to reduce bandwidth usage on their network. There are " .
+       		    "reports that this code does break some page rendering.')", 'web-tripwire' );
 
   		$results = $wpdb->query( $insert );
 	}

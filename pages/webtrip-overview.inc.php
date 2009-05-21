@@ -67,4 +67,23 @@
 <p><?php printf( __( 'This functionality is also very experimental. In fact, it\'s still undergoing a lot development ' .
 	'to get it to a functional level. So you %sreally%s aren\'t missing out.', 'web-tripwire' ), '<em>', '</em>' ); ?></p>
 <?php } ?>
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+        codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+        width="550"
+		  height="200" id="graph-2" align="middle">
+ 
+	<param name="allowScriptAccess" value="sameDomain" />
+	<param name="movie" value="../flash/open-flash-chart.swf?data=<?php echo urlencode( '../json/test.json' ); ?>" />
+	<param name="quality" value="high" />
+	<embed src="../flash/open-flash-chart.swf?data=<?php echo urlencode( '../json/test.json' ); ?>"
+		   quality="high"
+		   bgcolor="#FFFFFF"
+		   width="500"
+		   height="250"
+		   name="open-flash-chart"
+		   align="middle"
+		   allowScriptAccess="sameDomain"
+		   type="application/x-shockwave-flash"
+		   pluginspage="http://www.macromedia.com/go/getflashplayer" />
+</object>
 </div>
