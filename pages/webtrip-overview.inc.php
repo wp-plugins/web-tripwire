@@ -73,9 +73,9 @@
 		  height="200" id="graph-2" align="middle">
  
 	<param name="allowScriptAccess" value="sameDomain" />
-	<param name="movie" value="<?php plugins_url( WP_WEBTRIP_ADIR . '/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.json' ); ?>" />
+	<param name="movie" value="<?php plugins_url( 'web-tripwire/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.json' ); ?>" />
 	<param name="quality" value="high" />
-	<embed src="<?php plugins_url( WP_WEBTRIP_ADIR . '/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.json' ); ?>"
+	<embed src="<?php plugins_url( 'web-tripwire/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.json' ); ?>"
 		   quality="high"
 		   bgcolor="#FFFFFF"
 		   width="500"
