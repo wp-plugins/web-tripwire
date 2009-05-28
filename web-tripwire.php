@@ -449,8 +449,8 @@ echo <<<END
 \n\n<!-- web-tripwire begin -->\n
 END;
 
-	echo "<script type=\"text/javascript\" src=\"" . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
-		"/js/swfobject.js"\"></script>\n";
+	echo '<script type=\"text/javascript\" src=\"' . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
+		'/js/swfobject.js\" /></script>\n';
 
 echo <<<END
 <script type="text/javascript">\n
