@@ -221,11 +221,11 @@ function web_tripwire_menu() {
 	$events = $results[0]->count;
 
 	add_menu_page( __( 'Web Tripwire Plugin Overview', 'web-tripwire' ),
-		__( 'Web Tripwire', 'web-tripwire' ), 8, __FILE__, 'web_tripwire_overview',
+		__( 'Web Tripwire', 'web-tripwire' ), 8, 'overview', 'web_tripwire_overview',
 		plugins_url( 'web-tripwire/images/icon16.png' ) );
 		
 	add_submenu_page( __FILE__, __( 'Web Tripwire Plugin Overview', 'web-tripwire' ),
-		__( 'Overview', 'web-tripwire' ), 8, __FILE__, 'web_tripwire_overview' );
+		__( 'Overview', 'web-tripwire' ), 8, 'overview', 'web_tripwire_overview' );
 		
    add_submenu_page( __FILE__, __( 'Web Tripwire Plugin Change Log', 'web-tripwire' ),
    	__( 'Change Log', 'web-tripwire' ), 8, 'changes', 'web_tripwire_changes' );
@@ -472,5 +472,5 @@ register_activation_hook(__FILE__,'webtrip_install');
  
 add_action( 'wp_head', 'webtrip_js' );
 add_action( 'admin_menu', 'web_tripwire_menu' );
-add_action( 'admin_head-web_tripwire_overview', 'wetrip_overview_js' );
+add_action( 'admin_head-overview', 'wetrip_overview_js' );
 ?>
