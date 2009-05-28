@@ -74,9 +74,9 @@
 		  height="200" id="graph-2" align="middle">
  
 	<param name="allowScriptAccess" value="sameDomain" />
-	<param name="movie" value="<?php echo WP_PLUGIN_URL . '/web-tripwire/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.php'; ?>" />
+	<param name="movie" value="<?php echo WP_PLUGIN_URL . '/web-tripwire/flash/open-flash-chart.swf?ofc=..%2Fjson%2Ftest.php'; ?>" />
 	<param name="quality" value="high" />
-	<embed src="<?php echo WP_PLUGIN_URL . '/web-tripwire/flash/open-flash-chart.swf?data=..%2Fjson%2Ftest.php'; ?>"
+	<embed src="<?php echo WP_PLUGIN_URL . '/web-tripwire/flash/open-flash-chart.swf?ofc=..%2Fjson%2Ftest.php'; ?>"
 		   quality="high"
 		   bgcolor="#FFFFFF"
 		   width="500"
