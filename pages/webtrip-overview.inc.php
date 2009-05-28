@@ -68,23 +68,6 @@
 	'to get it to a functional level. So you %sreally%s aren\'t missing out.', 'web-tripwire' ), '<em>', '</em>' ); ?></p>
 <?php } ?>
 
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
-        codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
-        width="550"
-		  height="200" id="graph-2" align="middle">
- 
-	<param name="allowScriptAccess" value="sameDomain" />
-	<param name="movie" value="<?php echo WP_PLUGIN_URL . '/web-tripwire/flash/open-flash-chart.swf?ofc=..%2Fjson%2Ftest.php'; ?>" />
-	<param name="quality" value="high" />
-	<embed src="<?php echo WP_PLUGIN_URL . '/web-tripwire/flash/open-flash-chart.swf?ofc=..%2Fjson%2Ftest.php'; ?>"
-		   quality="high"
-		   bgcolor="#FFFFFF"
-		   width="500"
-		   height="250"
-		   name="open-flash-chart"
-		   align="middle"
-		   allowScriptAccess="sameDomain"
-		   type="application/x-shockwave-flash"
-		   pluginspage="http://www.macromedia.com/go/getflashplayer" />
-</object>
+<div id="sig_distribution"></div>
+
 </div>

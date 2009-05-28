@@ -442,6 +442,24 @@ echo <<<END
 END;
 }
 
+function webtrip_overview_js() {
+	global $plugin_directory;
+
+echo <<<END
+\n\n<!-- web-tripwire begin -->\n
+END;
+
+	echo "<script type=\"text/javascript\" src=\"" . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
+		"/js/swfobject.js"\"></script>\n";
+
+echo <<<END
+<script type="text/javascript">\n
+swfobject.embedSWF("<?php echo WP_PLUGIN_URL . WP_WEBTRIP_RDIR . '/flash/open-flash-chart.swf'; ?>", "sig_distribution", "550", "200", "9.0.0", "expressInstall.swf", {"data-file":"<?php echo WP_PLUGIN_URL . WP_WEBTRIP_RDIR . '/json/test.php'; ?>"} );\n
+</script>\n
+<!-- web-tripwire end -->\n\n
+END;
+}
+
 /**
  * Get the plug-in installed into the WordPress installation.
  */
@@ -452,6 +470,7 @@ register_activation_hook(__FILE__,'webtrip_install');
  * Register our header components, and the administration menu.
  */
  
-add_action('wp_head', 'webtrip_js');
-add_action('admin_menu', 'web_tripwire_menu');
+add_action( 'wp_head', 'webtrip_js' );
+add_action( 'admin_menu', 'web_tripwire_menu' );
+add_action( 'admin_head-web_tripwire_overview', 'wetrip_overview_js' );
 ?>
