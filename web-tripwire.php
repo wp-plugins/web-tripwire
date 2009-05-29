@@ -472,5 +472,5 @@ register_activation_hook(__FILE__,'webtrip_install');
  
 add_action( 'wp_head', 'webtrip_js' );
 add_action( 'admin_menu', 'web_tripwire_menu' );
-add_action( 'admin_head-' . __FILE__, 'webtrip_overview_js' );
+add_action( 'admin_head-web-tripwire.php', 'webtrip_overview_js' );
 ?>
