@@ -431,35 +431,35 @@ function web_tripwire_forums() {
 function webtrip_js() {
 	global $plugin_directory;
 
-echo <<<END
-\n\n<!-- web-tripwire begin -->\n
-END;
+?>
+<!-- web-tripwire begin -->
+<?php
 
 	echo '<script type="text/javascript" src="' . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
 		'/webtrip-javascript.php?target=' . rawurlencode( get_bloginfo( 'url' ) . $_SERVER['REQUEST_URI'] ) .
 		'\"></script>';
 
-echo <<<END
-\n<!-- web-tripwire end -->\n\n
-END;
+?>
+<!-- web-tripwire end -->
+<?php
 }
 
 function webtrip_overview_js() {
 	global $plugin_directory;
 
-echo <<<END
-\n\n<!-- web-tripwire begin -->\n
-END;
+?>
+<!-- web-tripwire begin -->
+<?php
 
 	echo '<script type="text/javascript" src="' . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
 		'/js/swfobject.js" /></script>\n';
 
-echo <<<END
+?>
 <script type="text/javascript">\n
 swfobject.embedSWF("<?php echo WP_PLUGIN_URL . WP_WEBTRIP_RDIR . '/flash/open-flash-chart.swf'; ?>", "sig_distribution", "550", "200", "9.0.0", "expressInstall.swf", {"data-file":"<?php echo WP_PLUGIN_URL . WP_WEBTRIP_RDIR . '/json/test.php'; ?>"} );\n
 </script>\n
-<!-- web-tripwire end -->\n\n
-END;
+<!-- web-tripwire end -->
+<?php
 }
 
 /**
