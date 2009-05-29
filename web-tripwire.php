@@ -435,9 +435,9 @@ echo <<<END
 \n\n<!-- web-tripwire begin -->\n
 END;
 
-	echo "<script type=\"text/javascript\" src=\"" . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
-		"/webtrip-javascript.php?target=" . rawurlencode( get_bloginfo( 'url' ) . $_SERVER['REQUEST_URI'] ) .
-		"\"></script>";
+	echo '<script type="text/javascript" src="' . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
+		'/webtrip-javascript.php?target=' . rawurlencode( get_bloginfo( 'url' ) . $_SERVER['REQUEST_URI'] ) .
+		'\"></script>';
 
 echo <<<END
 \n<!-- web-tripwire end -->\n\n
@@ -451,8 +451,8 @@ echo <<<END
 \n\n<!-- web-tripwire begin -->\n
 END;
 
-	echo '<script type=\"text/javascript\" src=\"' . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
-		'/js/swfobject.js\" /></script>\n';
+	echo '<script type="text/javascript" src="' . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
+		'/js/swfobject.js" /></script>\n';
 
 echo <<<END
 <script type="text/javascript">\n
