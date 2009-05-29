@@ -432,15 +432,10 @@ function webtrip_js() {
 	global $plugin_directory;
 
 ?>
+
 <!-- web-tripwire begin -->
-<?php
+<script type="text/javascript" src="<?php echo WP_PLUGIN_URL . WP_WEBTRIP_RDIR; ?>/webtrip-javascript.php?target=<?php echo rawurlencode( get_bloginfo( 'url' ) . $_SERVER['REQUEST_URI'] ); ?>"></script><!-- web-tripwire end -->
 
-	echo '<script type="text/javascript" src="' . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
-		'/webtrip-javascript.php?target=' . rawurlencode( get_bloginfo( 'url' ) . $_SERVER['REQUEST_URI'] ) .
-		'\"></script>';
-
-?>
-<!-- web-tripwire end -->
 <?php
 }
 
@@ -448,17 +443,14 @@ function webtrip_overview_js() {
 	global $plugin_directory;
 
 ?>
+
 <!-- web-tripwire begin -->
-<?php
-
-	echo '<script type="text/javascript" src="' . WP_PLUGIN_URL . WP_WEBTRIP_RDIR .
-		'/js/swfobject.js" /></script>\n';
-
-?>
-<script type="text/javascript">\n
-swfobject.embedSWF("<?php echo WP_PLUGIN_URL . WP_WEBTRIP_RDIR . '/flash/open-flash-chart.swf'; ?>", "sig_distribution", "550", "200", "9.0.0", "expressInstall.swf", {"data-file":"<?php echo WP_PLUGIN_URL . WP_WEBTRIP_RDIR . '/json/test.php'; ?>"} );\n
-</script>\n
+<script type="text/javascript" src="<?php echo WP_PLUGIN_URL . WP_WEBTRIP_RDIR; ?>/js/swfobject.js" /></script>
+<script type="text/javascript">
+swfobject.embedSWF("<?php echo WP_PLUGIN_URL . WP_WEBTRIP_RDIR; ?>/flash/open-flash-chart.swf", "sig_distribution", "550", "200", "9.0.0", "expressInstall.swf", {"data-file":"<?php echo WP_PLUGIN_URL . WP_WEBTRIP_RDIR; ?>/json/test.php"} );
+</script>
 <!-- web-tripwire end -->
+
 <?php
 }
 
